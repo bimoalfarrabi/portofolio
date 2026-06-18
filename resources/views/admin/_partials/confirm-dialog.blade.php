@@ -1,4 +1,4 @@
-<dialog id="adminConfirmDialog" class="hidden w-full max-w-md border border-line bg-surface-1 p-0 shadow-[0_35px_120px_rgba(24,24,27,0.18)] backdrop:bg-ink/40 backdrop:backdrop-blur-sm open:flex open:flex-col m-auto" aria-labelledby="adminConfirmTitle" aria-describedby="adminConfirmMessage">
+<dialog id="adminConfirmDialog" class="w-full max-w-md border border-line bg-surface-1 p-0 shadow-[0_35px_120px_rgba(24,24,27,0.18)] backdrop:bg-ink/40 backdrop:backdrop-blur-sm" style="display:none;flex-direction:column;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);margin:0" aria-labelledby="adminConfirmTitle" aria-describedby="adminConfirmMessage">
     <div class="flex items-start gap-4 p-6">
         <span class="flex size-10 shrink-0 items-center justify-center rounded-full border border-red-100 bg-red-50 text-red-600">
             <svg class="size-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
@@ -45,7 +45,7 @@
                 acceptBtn.className = form.dataset.confirmTone === 'neutral'
                     ? 'border border-ink bg-ink px-4 py-2 font-mono text-xs uppercase tracking-[0.18em] text-surface-1 transition-colors hover:bg-accent hover:border-accent'
                     : 'border border-red-600 bg-red-600 px-4 py-2 font-mono text-xs uppercase tracking-[0.18em] text-white transition-colors hover:bg-red-700 hover:border-red-700';
-                dialog.classList.remove('hidden');
+                dialog.style.display = 'flex';
                 dialog.showModal();
                 requestAnimationFrame(() => acceptBtn.focus());
             }
@@ -53,7 +53,7 @@
             function close() {
                 pendingForm = null;
                 if (dialog.open) dialog.close();
-                dialog.classList.add('hidden');
+                dialog.style.display = 'none';
             }
 
             document.addEventListener('submit', function (event) {
