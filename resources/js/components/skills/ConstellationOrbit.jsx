@@ -2,30 +2,48 @@ import { useMemo } from 'react';
 import { motion } from 'motion/react';
 import { BrandIcon } from '../shared';
 
+// Seeded pseudo-random untuk jitter yang konsisten (tidak berubah setiap render)
+function seededRandom(seed) {
+    const x = Math.sin(seed + 1) * 10000;
+    return x - Math.floor(x);
+}
+
 function buildOrbitNodes(nodes) {
     const total = nodes.length;
     if (!total) return [];
 
-    const GOLDEN_ANGLE = Math.PI * (3 - Math.sqrt(5));
-    const CENTER_X = 50;
-    const CENTER_Y = 50;
-    const MIN_RADIUS = 10;
-    const MAX_RADIUS = 34;
-    const ASPECT_RATIO = 0.75;
+    const PADDING_X = 12; // % dari kiri/kanan
+    const PADDING_Y = 10; // % dari atas/bawah
+    const AREA_W = 100 - PADDING_X * 2;
+    const AREA_H = 100 - PADDING_Y * 2;
+
+    // Hitung grid cols/rows yang paling seimbang
+    const cols = Math.ceil(Math.sqrt(total * 1.5));
+    const rows = Math.ceil(total / cols);
+
+    const cellW = AREA_W / cols;
+    const cellH = AREA_H / rows;
+
+    // Jitter max: 30% dari ukuran cell agar tidak overlap
+        const jitterX = cellW * 0.18;
+        const jitterY = cellH * 0.18;
 
     return nodes.map((node, index) => {
-        const angle = index * GOLDEN_ANGLE;
-        const normalizedRadius = total === 1
-            ? MIN_RADIUS
-            : MIN_RADIUS + (MAX_RADIUS - MIN_RADIUS) * Math.sqrt(index / (total - 1));
+        const col = index % cols;
+        const row = Math.floor(index / cols);
 
-        const x = CENTER_X + Math.cos(angle) * normalizedRadius;
-        const y = CENTER_Y + Math.sin(angle) * normalizedRadius * ASPECT_RATIO;
+        // Center of this cell
+        const cx = PADDING_X + col * cellW + cellW / 2;
+        const cy = PADDING_Y + row * cellH + cellH / 2;
+
+        // Deterministic jitter per node
+        const jx = (seededRandom(index * 2) - 0.5) * 2 * jitterX;
+        const jy = (seededRandom(index * 2 + 1) - 0.5) * 2 * jitterY;
 
         return {
             ...node,
-            x: `${Math.max(10, Math.min(90, x))}%`,
-            y: `${Math.max(10, Math.min(90, y))}%`,
+            x: `${Math.max(PADDING_X, Math.min(100 - PADDING_X, cx + jx)).toFixed(2)}%`,
+            y: `${Math.max(PADDING_Y, Math.min(100 - PADDING_Y, cy + jy)).toFixed(2)}%`,
         };
     });
 }
