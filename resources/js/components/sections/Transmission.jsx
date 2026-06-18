@@ -36,9 +36,9 @@ export default function Transmission({ logs = [] }) {
                     variants={itemVariants}
                     className="mb-12 text-[clamp(2rem,5vw,3.4rem)] font-semibold leading-[1.05] tracking-[-0.04em] text-ink"
                 >
-                    Seperti apa portofolio ini
+                    Misi berjalan.
                     <br />
-                    <span className="text-ink-faint">saat ia <span className="text-accent">bergerak</span>.</span>
+                    <span className="text-ink-faint">Log <span className="text-accent">dicatat</span>.</span>
                 </motion.h2>
 
                 <div className="border border-line bg-surface-1">
