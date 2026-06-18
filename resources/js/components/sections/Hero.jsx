@@ -48,8 +48,8 @@ export default function Hero() {
                         custom={0.18}
                         className="max-w-4xl text-[clamp(3.4rem,9.4vw,7.8rem)] font-semibold leading-[0.9] tracking-[-0.05em] text-ink"
                     >
-                        Laravel dev,
-                        <span className="block text-ink-faint">visual <span className="text-accent">storyteller</span>.</span>
+                        Developer Laravel,
+                        <span className="block text-ink-faint">pencerita <span className="text-accent">visual</span>.</span>
                     </motion.h1>
 
                     <motion.p
@@ -74,7 +74,7 @@ export default function Hero() {
                             className="group inline-flex items-center justify-center gap-2 bg-ink px-7 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-surface-1 transition-colors duration-200 hover:bg-accent"
                         >
                             <span className="font-mono text-xs">[01]</span>
-                            Start the signal
+                            Mulai sinyal
                             <svg className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
                                 <path d="M5 12h14" />
                                 <path d="m13 6 6 6-6 6" />
@@ -85,7 +85,7 @@ export default function Hero() {
                             className="inline-flex items-center justify-center gap-2 border border-line bg-surface-1 px-7 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-ink transition-colors duration-200 hover:border-ink"
                         >
                             <span className="font-mono text-xs text-ink-mute">[02]</span>
-                            Browse orbit
+                            Lihat orbit
                         </a>
                     </motion.div>
 

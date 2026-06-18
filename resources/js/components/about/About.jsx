@@ -61,7 +61,7 @@ export default function About() {
                 >
                     <p className="eng-label mb-3">Origin signal · 03</p>
                     <h2 className="text-[clamp(2.4rem,6vw,4.4rem)] font-semibold leading-[0.98] tracking-[-0.05em] text-ink">
-                        Hey, I&rsquo;m
+                        Hai, saya
                         <span className="block text-accent">Bimo Alfarrabi.</span>
                     </h2>
                     <p className="mt-6 text-base leading-8 text-ink-mute">
@@ -74,8 +74,8 @@ export default function About() {
                     </p>
                     <p className="mt-8 eng-label">
                         {isTouchDevice
-                            ? (profileActive ? 'Tap again to dismiss silhouette' : 'Tap this sector to resolve profile silhouette')
-                            : 'Hover this sector to resolve profile silhouette'
+                            ? (profileActive ? 'Ketuk lagi untuk sembunyikan siluet' : 'Ketuk bagian ini untuk menampilkan siluet profil')
+                            : 'Arahkan kursor ke sini untuk menampilkan siluet profil'
                         }
                     </p>
                 </motion.div>
@@ -171,7 +171,7 @@ export default function About() {
                                 transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
                                 className="size-1.5 rounded-full bg-success"
                             />
-                            Available
+                            Tersedia
                         </span>
                     </div>
                 </motion.div>

@@ -5,12 +5,12 @@ import { BrandIcon } from '../shared';
 const DEFAULTS = {
     email: 'bimoalfarrabi24@gmail.com',
     available: true,
-    availableLabel: 'Available for new projects',
-    busyLabel: 'Booked, but still reading messages',
+    availableLabel: 'Tersedia untuk project baru',
+    busyLabel: 'Penuh, tapi masih membaca pesan',
     location: 'Indonesia',
     timeZone: 'Asia/Jakarta',
     timeZoneLabel: 'GMT+7',
-    responseTime: 'Usually replies within 24h',
+    responseTime: 'Biasanya membalas dalam 24 jam',
     channels: [
         { label: 'LinkedIn', href: 'https://linkedin.com/in/bimoalfarrabi', handle: 'in/bimoalfarrabi' },
         { label: 'GitHub', href: 'https://github.com/bimoalfarrabi', handle: '@bimoalfarrabi' },
@@ -162,8 +162,8 @@ export default function Collab({ collab }) {
                     <div>
                         <p className="eng-label mb-3">SYS_COMMS · 08</p>
                         <h2 className="max-w-3xl text-[clamp(2.4rem,6vw,4.4rem)] font-semibold leading-[0.98] tracking-[-0.05em] text-ink">
-                            Got a signal
-                            <span className="block text-ink-faint">worth <span className="text-accent">sending</span>?</span>
+                            Punya sinyal
+                            <span className="block text-ink-faint">yang layak <span className="text-accent">dikirim</span>?</span>
                         </h2>
                     </div>
                     <p className="max-w-sm text-sm leading-7 text-ink-mute">
@@ -207,14 +207,14 @@ export default function Collab({ collab }) {
                                 className="inline-flex items-center justify-center gap-2 bg-ink px-7 py-3.5 text-sm font-medium uppercase tracking-[0.16em] text-surface-1 transition-colors duration-200 hover:bg-accent"
                             >
                                 <span className="font-mono text-xs">[TX]</span>
-                                Send a message
+                                Kirim pesan
                             </a>
                             <button
                                 type="button"
                                 onClick={handleCopy}
                                 className="inline-flex items-center justify-center gap-2 border border-line bg-surface-1 px-7 py-3.5 text-sm font-medium uppercase tracking-[0.16em] text-ink-soft transition-colors duration-200 hover:border-ink hover:text-ink"
                             >
-                                {copied ? 'Copied' : 'Copy email'}
+                                {copied ? 'Tersalin' : 'Salin email'}
                             </button>
                             <button
                                 type="button"
@@ -223,7 +223,7 @@ export default function Collab({ collab }) {
                                 aria-expanded={formOpen}
                                 aria-controls="collab-form"
                             >
-                                {formOpen ? 'Close form' : 'Use form'}
+                                {formOpen ? 'Tutup form' : 'Gunakan form'}
                             </button>
                         </div>
                         {profile.responseTime && (
@@ -322,9 +322,9 @@ export default function Collab({ collab }) {
                                                 disabled={formState === 'sending'}
                                                 className="inline-flex items-center justify-center gap-2 bg-ink px-6 py-3 text-sm font-medium uppercase tracking-[0.16em] text-surface-1 transition-colors duration-200 hover:bg-accent disabled:cursor-not-allowed disabled:opacity-60"
                                             >
-                                                {formState === 'sending' ? 'Transmitting...' : 'Transmit'}
+                                                {formState === 'sending' ? 'Mengirim...' : 'Kirim'}
                                             </button>
-                                            <p className="eng-label">Sent to my email + logged in Mission Control.</p>
+                                             <p className="eng-label">Terkirim ke email saya + tercatat di Mission Control.</p>
                                         </div>
 
                                         {feedback && (
@@ -367,7 +367,7 @@ export default function Collab({ collab }) {
 
                         <div className="mt-7">
                             <div className="flex items-center justify-between">
-                                <span className="eng-label">Day progress</span>
+                                <span className="eng-label">Progres hari</span>
                                 <span className="font-mono text-[11px] tabular-nums text-ink-mute">{Math.round(dayProgress * 100)}%</span>
                             </div>
                             <div className="mt-2 h-1.5 overflow-hidden border border-line bg-surface-2">

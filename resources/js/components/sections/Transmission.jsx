@@ -36,9 +36,9 @@ export default function Transmission({ logs = [] }) {
                     variants={itemVariants}
                     className="mb-12 text-[clamp(2rem,5vw,3.4rem)] font-semibold leading-[1.05] tracking-[-0.04em] text-ink"
                 >
-                    What this portfolio
+                    Seperti apa portofolio ini
                     <br />
-                    <span className="text-ink-faint">looks like while it <span className="text-accent">moves</span>.</span>
+                    <span className="text-ink-faint">saat ia <span className="text-accent">bergerak</span>.</span>
                 </motion.h2>
 
                 <div className="border border-line bg-surface-1">
@@ -60,7 +60,7 @@ export default function Transmission({ logs = [] }) {
                 </div>
 
                 <motion.p variants={itemVariants} className="mt-6 eng-label">
-                    More signals incoming.
+                    Sinyal lainnya akan segera hadir.
                 </motion.p>
             </motion.div>
         </section>

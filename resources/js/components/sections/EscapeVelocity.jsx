@@ -19,8 +19,8 @@ export default function EscapeVelocity({ stats = [] }) {
                     <div>
                         <p className="eng-label mb-3">SYS_TELEMETRY · 07</p>
                         <h2 className="max-w-3xl text-[clamp(2.4rem,6vw,4.4rem)] font-semibold leading-[0.98] tracking-[-0.05em] text-ink">
-                            Tiny stats,
-                            <span className="block text-ink-faint">actual <span className="text-accent">signal</span>.</span>
+                            Statistik kecil,
+                            <span className="block text-ink-faint">sinyal <span className="text-accent">nyata</span>.</span>
                         </h2>
                     </div>
                     <p className="max-w-sm text-sm leading-7 text-ink-mute">
