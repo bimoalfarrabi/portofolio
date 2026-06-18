@@ -1,8 +1,37 @@
-import { motion, useReducedMotion } from 'motion/react';
+import { useState } from 'react';
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { BrandIcon } from '../shared';
+
+// Tooltip NASA-punk — monospace, frame corner, surface-1 bg
+function SkillTooltip({ label }) {
+    return (
+        <motion.span
+            key="tooltip"
+            initial={{ opacity: 0, y: 4 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 4 }}
+            transition={{ duration: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            role="tooltip"
+            className="pointer-events-none absolute bottom-[calc(100%+6px)] left-1/2 z-50 -translate-x-1/2 inline-flex items-center whitespace-nowrap border border-ink/20 bg-surface-1 px-2.5 py-1.5 shadow-[0_4px_16px_rgba(21,20,15,0.12)]"
+        >
+            {/* Corner marks */}
+            <span className="pointer-events-none absolute -left-px -top-px h-1.5 w-1.5 border-l border-t border-ink" aria-hidden="true" />
+            <span className="pointer-events-none absolute -right-px -top-px h-1.5 w-1.5 border-r border-t border-ink" aria-hidden="true" />
+
+            <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink">
+                {label}
+            </span>
+
+            {/* Caret */}
+            <span className="absolute left-1/2 top-full -translate-x-1/2 border-x-[5px] border-t-[5px] border-x-transparent border-t-ink/20" aria-hidden="true" />
+            <span className="absolute left-1/2 top-full -translate-x-1/2 -translate-y-px border-x-[4px] border-t-[4px] border-x-transparent border-t-surface-1" aria-hidden="true" />
+        </motion.span>
+    );
+}
 
 export default function ConstellationOrbit({ nodes }) {
     const reduced = useReducedMotion();
+    const [hoveredIdx, setHoveredIdx] = useState(null);
 
     return (
         <motion.div
@@ -33,7 +62,14 @@ export default function ConstellationOrbit({ nodes }) {
                             ease: [0.16, 1, 0.3, 1],
                         }}
                         className="group relative"
+                        onMouseEnter={() => setHoveredIdx(idx)}
+                        onMouseLeave={() => setHoveredIdx(null)}
                     >
+                        {/* Tooltip */}
+                        <AnimatePresence>
+                            {hoveredIdx === idx && <SkillTooltip label={node.label} />}
+                        </AnimatePresence>
+
                         {/* Cell */}
                         <motion.button
                             type="button"
