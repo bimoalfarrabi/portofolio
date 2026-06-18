@@ -42,6 +42,7 @@ class StoreProjectRequest extends FormRequest
         return [
             'title' => ['required', 'string', 'max:255'],
             'type' => ['required', Rule::in(['open', 'closed'])],
+            'repo_url' => ['nullable', 'url', 'max:2048'],
             'category' => ['nullable', 'string', 'max:255'],
             'year' => ['nullable', 'string', 'max:20'],
             'image' => ['nullable', 'string', 'max:2048'],

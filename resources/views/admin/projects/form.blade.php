@@ -27,12 +27,18 @@
                 </label>
                 <label class="grid gap-2">
                     <span class="text-sm font-medium text-ink-soft">Type</span>
-                    <select name="type" class="@error('type') border-warn @enderror border border-line bg-surface-1 px-4 py-3 text-sm outline-none transition-colors focus:border-ink-soft focus:ring-0">
+                    <select name="type" id="field-type" class="@error('type') border-warn @enderror border border-line bg-surface-1 px-4 py-3 text-sm outline-none transition-colors focus:border-ink-soft focus:ring-0">
                         <option value="open" @selected(old('type', $project->type ?: 'open') === 'open')>Open Source</option>
                         <option value="closed" @selected(old('type', $project->type) === 'closed')>Closed Source</option>
                     </select>
                     <x-admin.field-error name="type" />
                 </label>
+                <div id="repo-url-field" class="grid gap-2 {{ old('type', $project->type ?: 'open') === 'closed' ? 'hidden' : '' }}">
+                    <span class="text-sm font-medium text-ink-soft">Repository URL</span>
+                    <input name="repo_url" value="{{ old('repo_url', $project->repo_url) }}" class="@error('repo_url') border-warn @enderror border border-line bg-surface-1 px-4 py-3 text-sm outline-none transition-colors focus:border-ink-soft focus:ring-0" placeholder="https://github.com/username/repo">
+                    <x-admin.field-error name="repo_url" />
+                    <span class="text-xs text-ink-mute">Link repository publik. Ditampilkan di halaman publik sebagai tombol.</span>
+                </div>
                 <label class="grid gap-2">
                     <span class="text-sm font-medium text-ink-soft">Category</span>
                     <input name="category" value="{{ old('category', $project->category) }}" class="@error('category') border-warn @enderror border border-line bg-surface-1 px-4 py-3 text-sm outline-none transition-colors focus:border-ink-soft focus:ring-0" placeholder="e.g. Web App, CLI Tool">
@@ -236,6 +242,20 @@
                     wrapper.appendChild(img);
                     preview.appendChild(wrapper);
                 });
+            });
+        })();
+
+        (function () {
+            const typeSelect = document.getElementById('field-type');
+            const repoField = document.getElementById('repo-url-field');
+            if (!typeSelect || !repoField) return;
+
+            typeSelect.addEventListener('change', function () {
+                if (typeSelect.value === 'open') {
+                    repoField.classList.remove('hidden');
+                } else {
+                    repoField.classList.add('hidden');
+                }
             });
         })();
     </script>

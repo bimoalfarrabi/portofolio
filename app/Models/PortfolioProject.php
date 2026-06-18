@@ -14,6 +14,7 @@ class PortfolioProject extends Model
     protected $fillable = [
         'title',
         'type',
+        'repo_url',
         'category',
         'year',
         'image',
