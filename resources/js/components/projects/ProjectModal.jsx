@@ -197,7 +197,7 @@ export default function ProjectModal({ project, tone, onClose }) {
                                 </div>
                             ) : (
                                 <div className="relative" role={hasSlider ? 'group' : undefined} aria-roledescription={hasSlider ? 'carousel' : undefined}>
-                                    <div className={`relative w-full overflow-hidden ${isPortrait ? 'aspect-[9/16] max-h-[70vh]' : 'aspect-[21/9]'}`}>
+                                    <div className={`relative w-full overflow-hidden ${isPortrait ? 'h-[60vh]' : 'aspect-[21/9]'}`}>
                                         <AnimatePresence initial={false} custom={direction}>
                                             <motion.img
                                                 key={images[slide]}
