@@ -23,6 +23,7 @@ function normalizeProjects(seedProjects, mode) {
             stack: project.stack ?? [],
             outcome: project.outcome,
             isFeatured: project.is_featured ?? false,
+            repo_url: project.repo_url ?? null,
         }))
         .sort((left, right) => {
             // Featured selalu di depan, sisanya urut by year
