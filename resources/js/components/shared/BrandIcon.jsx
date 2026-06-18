@@ -33,6 +33,7 @@ import {
     siMongodb,
     siGraphql,
     siGithub,
+    siAlpinedotjs,
 } from 'simple-icons';
 
 // ── Brand marks (official paths) ───────────────────────────────────────
@@ -58,6 +59,7 @@ const BRAND_PATHS = {
     mongodb: siMongodb.path,
     graphql: siGraphql.path,
     github: siGithub.path,
+    alpinejs: siAlpinedotjs.path,
 };
 
 // ── Concept icons (hand-drawn; no brand exists) ────────────────────────
@@ -152,6 +154,15 @@ const CONCEPT_ICONS = {
             <path d="m21 7-9 6-9-6" />
         </g>
     ),
+    // Blade — no official brand mark; two overlapping chevrons referencing
+    // the blade/template-layer concept from Laravel's view engine.
+    blade: (
+        <g fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M4 7 L12 3 L20 7 L12 11 Z" />
+            <path d="M4 13 L12 9 L20 13 L12 17 Z" />
+            <path d="M8 19 L12 21 L16 19" />
+        </g>
+    ),
     // LinkedIn — hand-drawn (simple-icons removed it for trademark reasons).
     // Stylised "in" mark inside a rounded square.
     linkedin: (
@@ -194,6 +205,10 @@ const ALIASES = {
     'rest api': 'api',
     gitlab: 'git',
     bitbucket: 'git',
+    alpine: 'alpinejs',
+    'alpine.js': 'alpinejs',
+    'blade template': 'blade',
+    'laravel blade': 'blade',
 };
 
 function normalize(name) {
