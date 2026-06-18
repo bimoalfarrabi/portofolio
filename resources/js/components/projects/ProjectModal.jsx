@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { BrandIcon } from '../shared';
 
@@ -27,11 +27,19 @@ export default function ProjectModal({ project, tone, onClose }) {
     const [slide, setSlide] = useState(0);
     const [direction, setDirection] = useState(0);
     const SWIPE_THRESHOLD = 60;
+    const [isPortrait, setIsPortrait] = useState(false);
+    const imgRef = useRef(null);
 
     useEffect(() => {
         setSlide(0);
         setDirection(0);
+        setIsPortrait(false);
     }, [project?.id]);
+
+    const handleImageLoad = useCallback((e) => {
+        const { naturalWidth, naturalHeight } = e.currentTarget;
+        setIsPortrait(naturalHeight > naturalWidth);
+    }, []);
 
     const goTo = (index, dir = null) => {
         if (images.length === 0) return;
@@ -189,7 +197,7 @@ export default function ProjectModal({ project, tone, onClose }) {
                                 </div>
                             ) : (
                                 <div className="relative" role={hasSlider ? 'group' : undefined} aria-roledescription={hasSlider ? 'carousel' : undefined}>
-                                    <div className="relative aspect-[21/9] w-full overflow-hidden">
+                                    <div className={`relative w-full overflow-hidden ${isPortrait ? 'max-h-[70vh]' : 'aspect-[21/9]'}`}>
                                         <AnimatePresence initial={false} custom={direction}>
                                             <motion.img
                                                 key={images[slide]}
@@ -207,7 +215,9 @@ export default function ProjectModal({ project, tone, onClose }) {
                                                 animate="center"
                                                 exit="exit"
                                                 transition={{ duration: 0.34, ease: [0.16, 1, 0.3, 1] }}
-                                                className="absolute inset-0 h-full w-full object-cover"
+                                                ref={imgRef}
+                                                onLoad={handleImageLoad}
+                                                className={`${isPortrait ? 'relative mx-auto block max-h-[70vh] w-auto' : 'absolute inset-0 h-full w-full object-cover'}`}
                                                 draggable={false}
                                                 drag={hasSlider ? 'x' : false}
                                                 dragConstraints={{ left: 0, right: 0 }}
