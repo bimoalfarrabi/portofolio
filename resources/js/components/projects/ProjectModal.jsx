@@ -197,7 +197,7 @@ export default function ProjectModal({ project, tone, onClose }) {
                                 </div>
                             ) : (
                                 <div className="relative" role={hasSlider ? 'group' : undefined} aria-roledescription={hasSlider ? 'carousel' : undefined}>
-                                    <div className={`relative w-full overflow-hidden ${isPortrait ? 'max-h-[70vh]' : 'aspect-[21/9]'}`}>
+                                    <div className={`relative w-full overflow-hidden ${isPortrait ? 'aspect-[9/16] max-h-[70vh]' : 'aspect-[21/9]'}`}>
                                         <AnimatePresence initial={false} custom={direction}>
                                             <motion.img
                                                 key={images[slide]}
@@ -217,7 +217,7 @@ export default function ProjectModal({ project, tone, onClose }) {
                                                 transition={{ duration: 0.34, ease: [0.16, 1, 0.3, 1] }}
                                                 ref={imgRef}
                                                 onLoad={handleImageLoad}
-                                                className={`${isPortrait ? 'relative mx-auto block max-h-[70vh] w-auto' : 'absolute inset-0 h-full w-full object-cover'}`}
+                                                className={`absolute inset-0 h-full w-full ${isPortrait ? 'object-contain' : 'object-cover'}`}
                                                 draggable={false}
                                                 drag={hasSlider ? 'x' : false}
                                                 dragConstraints={{ left: 0, right: 0 }}
