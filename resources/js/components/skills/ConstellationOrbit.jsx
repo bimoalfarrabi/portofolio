@@ -25,8 +25,8 @@ function buildOrbitNodes(nodes) {
     const cellH = AREA_H / rows;
 
     // Jitter max: 30% dari ukuran cell agar tidak overlap
-        const jitterX = cellW * 0.18;
-        const jitterY = cellH * 0.18;
+        const jitterX = cellW * 0.12;
+        const jitterY = cellH * 0.12;
 
     return nodes.map((node, index) => {
         const col = index % cols;
