@@ -217,7 +217,7 @@ export default function ProjectModal({ project, tone, onClose }) {
                                                 transition={{ duration: 0.34, ease: [0.16, 1, 0.3, 1] }}
                                                 ref={imgRef}
                                                 onLoad={handleImageLoad}
-                                                className="absolute inset-0 h-full w-full object-cover"
+                                                className={`absolute inset-0 h-full w-full ${isPortrait ? 'object-contain' : 'object-cover'}`}
                                                 draggable={false}
                                                 drag={hasSlider ? 'x' : false}
                                                 dragConstraints={{ left: 0, right: 0 }}
