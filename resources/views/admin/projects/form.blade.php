@@ -33,7 +33,7 @@
                     </select>
                     <x-admin.field-error name="type" />
                 </label>
-                <div id="repo-url-field" class="grid gap-2 {{ old('type', $project->type ?: 'open') === 'closed' ? 'hidden' : '' }}">
+                <div id="repo-url-field" class="grid gap-2 sm:col-span-2 {{ old('type', $project->type ?: 'open') === 'closed' ? 'hidden' : '' }}">
                     <span class="text-sm font-medium text-ink-soft">Repository URL</span>
                     <input name="repo_url" value="{{ old('repo_url', $project->repo_url) }}" class="@error('repo_url') border-warn @enderror border border-line bg-surface-1 px-4 py-3 text-sm outline-none transition-colors focus:border-ink-soft focus:ring-0" placeholder="https://github.com/username/repo">
                     <x-admin.field-error name="repo_url" />
