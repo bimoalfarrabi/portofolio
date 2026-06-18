@@ -1,0 +1,190 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, 'Liberation Mono', monospace;
+
+    /* Surfaces — neutral off-white, near-pure with very subtle warm bias */
+    --color-surface-0: #F5F5F3;
+    --color-surface-1: #FBFBFA;
+    --color-surface-2: #EDEDEB;
+    --color-surface-3: #E2E2DF;
+
+    /* Ink (foreground) */
+    --color-ink: #15140F;
+    --color-ink-soft: #3A3833;
+    --color-ink-mute: #6F6B5F;
+    --color-ink-faint: #A8A39A;
+
+    /* Lines / borders */
+    --color-line: #C8C6BF;
+    --color-line-strong: #1C1C1A;
+
+    /* Accent — NASA worm vermilion */
+    --color-accent: #E2533F;
+    --color-accent-soft: #F2A99B;
+    --color-accent-deep: #B33C2A;
+
+    /* Warn — burnt sienna, distinctly muted vs accent (used for errors) */
+    --color-warn: #8A4F22;
+    --color-warn-soft: #E6D2B8;
+    --color-warn-deep: #4A2A0F;
+
+    /* Success — muted forest green, instrument readout vibe */
+    --color-success: #3F8A4E;
+    --color-success-soft: #C9E1CD;
+    --color-success-deep: #1F4527;
+}
+
+@keyframes progress-shimmer {
+    from { transform: translate3d(-120%, 0, 0); }
+    to { transform: translate3d(360%, 0, 0); }
+}
+
+.progress-shimmer {
+    animation: progress-shimmer 4.8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+    will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .progress-shimmer { animation: none; }
+}
+
+@keyframes scan-line {
+    from { transform: translate3d(0, -100%, 0); }
+    to { transform: translate3d(0, 100%, 0); }
+}
+
+@keyframes blip {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.35; }
+}
+
+.starfield-blip {
+    animation: blip 1.6s ease-in-out infinite;
+}
+
+html {
+    scroll-behavior: smooth;
+    background-color: var(--color-surface-0);
+}
+
+body {
+    background-color: var(--color-surface-0);
+    color: var(--color-ink);
+}
+
+@layer base {
+    button:not(:disabled),
+    [role="button"]:not([aria-disabled="true"]),
+    summary,
+    label:has(> input[type="checkbox"]),
+    label:has(> input[type="radio"]) {
+        cursor: pointer;
+    }
+
+    button:disabled,
+    [aria-disabled="true"],
+    input:disabled,
+    select:disabled,
+    textarea:disabled {
+        cursor: not-allowed;
+    }
+
+    input[type="file"]::file-selector-button { cursor: pointer; }
+
+    :where(a, button, [role="button"], summary):focus-visible {
+        outline: 2px solid var(--color-accent);
+        outline-offset: 2px;
+        border-radius: inherit;
+    }
+
+    /* Selection */
+    ::selection {
+        background-color: var(--color-accent);
+        color: var(--color-surface-1);
+    }
+
+    /*
+     * Pre-hide reveal containers to prevent first-paint flash.
+     * Motion v12 applies initial state via inline style on first React
+     * render, but there's a tiny gap between browser's first paint and
+     * React's commit where the element can flash visible. CSS loads
+     * before JS, so [data-reveal] is hidden from the very first paint;
+     * motion overrides with its own inline style during the animation.
+     */
+    [data-reveal] {
+        opacity: 0;
+        will-change: opacity, transform;
+    }
+}
+
+@layer components {
+    /* Engineering label — used on every section header */
+    .eng-label {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: var(--color-ink-mute);
+    }
+
+    /* Frame — solid surface card with corner ticks; no translucency, no halo */
+    .frame {
+        position: relative;
+        background-color: var(--color-surface-1);
+        border: 1px solid var(--color-line);
+    }
+
+    .frame::before,
+    .frame::after,
+    .frame > .frame-corner {
+        content: '';
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-color: var(--color-line-strong);
+        border-style: solid;
+        border-width: 0;
+        pointer-events: none;
+    }
+
+    .frame::before { top: -1px; left: -1px; border-top-width: 1.5px; border-left-width: 1.5px; }
+    .frame::after  { top: -1px; right: -1px; border-top-width: 1.5px; border-right-width: 1.5px; }
+
+    .frame-corner.bl { bottom: -1px; left: -1px; border-bottom-width: 1.5px; border-left-width: 1.5px; }
+    .frame-corner.br { bottom: -1px; right: -1px; border-bottom-width: 1.5px; border-right-width: 1.5px; }
+
+    /* Hairline grid — fixed pattern, deterministic, no banding */
+    .grid-hairline {
+        background-image:
+            linear-gradient(to right, color-mix(in oklab, var(--color-line) 60%, transparent) 1px, transparent 1px),
+            linear-gradient(to bottom, color-mix(in oklab, var(--color-line) 60%, transparent) 1px, transparent 1px);
+        background-size: 56px 56px;
+        background-position: -1px -1px;
+    }
+
+    .grid-hairline-soft {
+        background-image:
+            linear-gradient(to right, color-mix(in oklab, var(--color-line) 35%, transparent) 1px, transparent 1px),
+            linear-gradient(to bottom, color-mix(in oklab, var(--color-line) 35%, transparent) 1px, transparent 1px);
+        background-size: 28px 28px;
+    }
+
+    /* Tick marks bar — Starfield instrument feel */
+    .tick-bar {
+        background-image: repeating-linear-gradient(
+            to right,
+            var(--color-line) 0,
+            var(--color-line) 1px,
+            transparent 1px,
+            transparent 8px
+        );
+    }
+}

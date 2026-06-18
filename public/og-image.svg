@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.5" stop-color="#faf9f6"/>
+      <stop offset="1" stop-color="#f3f1ec"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.78" cy="0.32" r="0.6">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <!-- Orbit system, right side -->
+  <g transform="translate(870,315)" fill="none">
+    <circle r="250" stroke="#e7e5e0" stroke-width="2"/>
+    <circle r="180" stroke="#dedcd6" stroke-width="2" stroke-dasharray="5 9"/>
+    <circle r="110" stroke="#cfccc4" stroke-width="2"/>
+    <circle cx="0" cy="0" r="26" fill="#09090b"/>
+    <circle cx="250" cy="0" r="9" fill="#3f3f46"/>
+    <circle cx="-127" cy="127" r="7" fill="#52525b"/>
+    <circle cx="78" cy="-163" r="6" fill="#71717a"/>
+    <circle cx="-180" cy="-12" r="5" fill="#a1a1aa"/>
+  </g>
+
+  <!-- Text block, left side -->
+  <g transform="translate(96,0)">
+    <g transform="translate(0,232)" fill="none">
+      <rect x="0" y="-34" width="46" height="46" rx="23" fill="#ffffff" stroke="#d6d3d1" stroke-width="2"/>
+      <circle cx="23" cy="-11" r="7" fill="#09090b"/>
+    </g>
+    <text x="70" y="208" font-family="'Instrument Sans','Segoe UI',sans-serif" font-size="22" letter-spacing="6" fill="#a1a1aa" font-weight="600">SIGNAL IN ORBIT</text>
+
+    <text x="0" y="320" font-family="'Instrument Sans','Segoe UI',sans-serif" font-size="96" font-weight="700" letter-spacing="-4" fill="#09090b">Laravel dev,</text>
+    <text x="0" y="416" font-family="'Instrument Sans','Segoe UI',sans-serif" font-size="96" font-weight="700" letter-spacing="-4" fill="#c4c1ba">visual storyteller.</text>
+
+    <text x="0" y="486" font-family="'Instrument Sans','Segoe UI',sans-serif" font-size="30" fill="#71717a">Membangun web yang enak dilihat, terasa hidup, dan selesai tepat waktu.</text>
+
+    <text x="0" y="556" font-family="'Instrument Sans','Segoe UI',sans-serif" font-size="24" letter-spacing="3" fill="#a1a1aa" font-weight="600">viasco prjkt.</text>
+  </g>
+</svg>
