@@ -34,6 +34,8 @@ import {
     siGraphql,
     siGithub,
     siAlpinedotjs,
+    siAndroid,
+    siAndroidstudio,
 } from 'simple-icons';
 
 // ── Brand marks (official paths) ───────────────────────────────────────
@@ -60,6 +62,8 @@ const BRAND_PATHS = {
     graphql: siGraphql.path,
     github: siGithub.path,
     alpinejs: siAlpinedotjs.path,
+    android: siAndroid.path,
+    androidstudio: siAndroidstudio.path,
 };
 
 // ── Concept icons (hand-drawn; no brand exists) ────────────────────────
@@ -209,6 +213,7 @@ const ALIASES = {
     'alpine.js': 'alpinejs',
     'blade template': 'blade',
     'laravel blade': 'blade',
+    'android studio': 'androidstudio',
 };
 
 function normalize(name) {
