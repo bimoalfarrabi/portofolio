@@ -286,6 +286,15 @@ export default function ProjectOrbit({ projects, tone, direction, activeLabel, o
                     style={{ left: project.x, top: project.y }}
                     aria-label={project.name}
                 >
+                    {/* Pulse ring — signals interactivity */}
+                    <motion.span
+                        className={`absolute inset-0 rounded-full border ${
+                            isDark ? 'border-white/30' : 'border-accent/50'
+                        }`}
+                        animate={{ scale: [1, 1.55], opacity: [0.6, 0] }}
+                        transition={{ duration: 2.2, ease: 'easeOut', repeat: Infinity, repeatDelay: 1.2 }}
+                    />
+
                     <span
                         className={`flex size-full items-center justify-center rounded-full border transition-colors duration-300 ${
                             isDark
@@ -305,6 +314,7 @@ export default function ProjectOrbit({ projects, tone, direction, activeLabel, o
                         }`}
                     >
                         {project.name}
+                        <span className={`ml-1.5 opacity-50 ${isDark ? 'text-white' : 'text-ink-mute'}`}>↗</span>
                     </span>
                 </motion.button>
             ))}
