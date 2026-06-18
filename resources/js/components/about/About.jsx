@@ -65,7 +65,8 @@ export default function About() {
                         <span className="block text-accent">Bimo Alfarrabi.</span>
                     </h2>
                     <p className="mt-6 text-base leading-8 text-ink-mute">
-                        Saya seorang pengembang &mdash; pakai Laravel di back-end, React/Vue di front-end.
+                        Saya seorang pengembang &mdash; pakai Laravel di back-end, React/Vue/Blade di front-end, dan Kotlin untuk Android.
+                        Laravel jadi pilihan utama bukan karena ikut-ikutan, tapi karena sudah terbiasa dan terbukti produktif untuk kebanyakan project web.
                         Suka bikin situs web yang enak dilihat, terasa bernapas, dan selesai tepat waktu.
                     </p>
                     <p className="mt-4 text-base leading-8 text-ink-mute">

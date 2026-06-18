@@ -48,7 +48,7 @@ export default function Hero() {
                         custom={0.18}
                         className="max-w-4xl text-[clamp(3.4rem,9.4vw,7.8rem)] font-semibold leading-[0.9] tracking-[-0.05em] text-ink"
                     >
-                        Developer Laravel,
+                        Developer web & Android,
                         <span className="block text-ink-faint">pencerita <span className="text-accent">visual</span>.</span>
                     </motion.h1>
 
