@@ -138,9 +138,9 @@ export default function ConstellationOrbit({ nodes }) {
                         whileHover={{ y: -1 }}
                         whileTap={{ y: 0 }}
                         transition={{ type: 'spring', stiffness: 340, damping: 22, mass: 0.5 }}
-                        className="flex origin-center items-center gap-2 whitespace-nowrap border border-line bg-surface-1 px-3.5 py-1.5 text-sm font-medium text-ink-soft transition-colors duration-150 ease-out group-hover:border-ink group-hover:text-ink"
+                        className="flex origin-center items-center gap-1 whitespace-nowrap border border-line bg-surface-1 px-2 py-1 text-[10px] font-medium text-ink-soft transition-colors duration-150 ease-out group-hover:border-ink group-hover:text-ink sm:gap-2 sm:px-3.5 sm:py-1.5 sm:text-sm"
                     >
-                        <BrandIcon name={node.icon || node.label} className={`size-3.5 ${idx % 4 === 0 ? 'text-accent' : 'text-ink'}`} />
+                        <BrandIcon name={node.icon || node.label} className={`size-3 sm:size-3.5 ${idx % 4 === 0 ? 'text-accent' : 'text-ink'}`} />
                         {node.label}
                     </motion.span>
                 </motion.button>
