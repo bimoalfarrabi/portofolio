@@ -46,7 +46,7 @@ export default function About() {
             onClick={handleTap}
             className="relative overflow-hidden bg-surface-0 px-5 py-24 text-ink"
         >
-            <div className="pointer-events-none absolute inset-0 z-[1] opacity-80">
+            <div className="pointer-events-none absolute inset-0 z-[1] opacity-35">
                 <AstronautDots active={profileActive} />
             </div>
 
