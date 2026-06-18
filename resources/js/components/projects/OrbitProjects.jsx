@@ -104,8 +104,8 @@ export default function OrbitProjects({ projects: seedProjects = [], focusProjec
                 >
                     <p className="eng-label mb-3">SYS_ORBIT · 06</p>
                     <h2 className="text-[clamp(2.4rem,6vw,4.4rem)] font-semibold leading-[0.98] tracking-[-0.05em] text-ink">
-                        Public builds and private systems,
-                        <span className="block text-ink-faint">shown in one <span className="text-accent">orbit</span>.</span>
+                        Build publik dan sistem privat,
+                        <span className="block text-ink-faint">ditampilkan dalam satu <span className="text-accent">orbit</span>.</span>
                     </h2>
                     <p className="mt-6 max-w-lg text-base leading-8 text-ink-mute">
                         Satu orbit untuk kerja publik, satu orbit untuk kerja privat. Strukturnya sama, aksesnya berbeda.

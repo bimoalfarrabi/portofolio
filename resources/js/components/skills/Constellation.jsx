@@ -20,8 +20,8 @@ export default function Constellation({ skills }) {
                 >
                     <p className="eng-label mb-3">SYS_NODES · 05</p>
                     <h2 className="max-w-xl text-[clamp(2.4rem,6vw,4.4rem)] font-semibold leading-[0.98] tracking-[-0.05em] text-ink">
-                        Skills, projects, and tools
-                        <span className="block text-ink-faint">connected as one <span className="text-accent">system</span>.</span>
+                        Skill, project, dan tools
+                        <span className="block text-ink-faint">terhubung dalam satu <span className="text-accent">sistem</span>.</span>
                     </h2>
                     <p className="mt-6 max-w-lg text-base leading-8 text-ink-mute">
                         Bukan bio panjang, bukan CV keras. Cuma peta singkat yang nunjukin apa yang saling terhubung di cara kerja saya.
