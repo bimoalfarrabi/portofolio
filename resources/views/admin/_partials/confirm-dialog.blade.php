@@ -1,4 +1,4 @@
-<dialog id="adminConfirmDialog" class="hidden w-full max-w-md border border-line bg-surface-1 p-0 shadow-[0_35px_120px_rgba(24,24,27,0.18)] backdrop:bg-ink/40 backdrop:backdrop-blur-sm open:flex open:flex-col" aria-labelledby="adminConfirmTitle" aria-describedby="adminConfirmMessage">
+<dialog id="adminConfirmDialog" class="hidden w-full max-w-md border border-line bg-surface-1 p-0 shadow-[0_35px_120px_rgba(24,24,27,0.18)] backdrop:bg-ink/40 backdrop:backdrop-blur-sm open:flex open:flex-col m-auto" aria-labelledby="adminConfirmTitle" aria-describedby="adminConfirmMessage">
     <div class="flex items-start gap-4 p-6">
         <span class="flex size-10 shrink-0 items-center justify-center rounded-full border border-red-100 bg-red-50 text-red-600">
             <svg class="size-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
