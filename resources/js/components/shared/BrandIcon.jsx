@@ -36,6 +36,7 @@ import {
     siAlpinedotjs,
     siAndroid,
     siAndroidstudio,
+    siCodeigniter,
 } from 'simple-icons';
 
 // ── Brand marks (official paths) ───────────────────────────────────────
@@ -64,6 +65,7 @@ const BRAND_PATHS = {
     alpinejs: siAlpinedotjs.path,
     android: siAndroid.path,
     androidstudio: siAndroidstudio.path,
+    codeigniter: siCodeigniter.path,
 };
 
 // ── Concept icons (hand-drawn; no brand exists) ────────────────────────
@@ -214,6 +216,7 @@ const ALIASES = {
     'blade template': 'blade',
     'laravel blade': 'blade',
     'android studio': 'androidstudio',
+    ci: 'codeigniter',
 };
 
 function normalize(name) {
