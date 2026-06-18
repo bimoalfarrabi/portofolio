@@ -17,32 +17,33 @@ function buildOrbitNodes(nodes) {
     const AREA_W = 100 - PADDING_X * 2;
     const AREA_H = 100 - PADDING_Y * 2;
 
-    // Hitung grid cols/rows yang paling seimbang
-    const cols = Math.ceil(Math.sqrt(total * 1.5));
+    // Hitung grid cols/rows: prioritas lebar cell agar label tidak overlap
+    // aspect container 4:3, jadi beri bobot lebih ke cols
+    const cols = Math.ceil(Math.sqrt(total * (4 / 3)));
     const rows = Math.ceil(total / cols);
 
     const cellW = AREA_W / cols;
     const cellH = AREA_H / rows;
 
-    // Jitter max: 30% dari ukuran cell agar tidak overlap
-        const jitterX = cellW * 0.12;
-        const jitterY = cellH * 0.12;
+    // Jitter kecil hanya di sumbu Y agar baris terasa organik tanpa risiko overlap horizontal
+    const jitterY = cellH * 0.18;
 
     return nodes.map((node, index) => {
         const col = index % cols;
         const row = Math.floor(index / cols);
 
-        // Center of this cell
-        const cx = PADDING_X + col * cellW + cellW / 2;
+        // Offset baris ganjil ke kanan setengah cell (brickwork pattern)
+        const brickOffset = (row % 2 === 1) ? cellW * 0.5 : 0;
+
+        const cx = PADDING_X + col * cellW + cellW / 2 + brickOffset;
         const cy = PADDING_Y + row * cellH + cellH / 2;
 
-        // Deterministic jitter per node
-        const jx = (seededRandom(index * 2) - 0.5) * 2 * jitterX;
-        const jy = (seededRandom(index * 2 + 1) - 0.5) * 2 * jitterY;
+        // Jitter Y saja — deterministik per node
+        const jy = (seededRandom(index) - 0.5) * 2 * jitterY;
 
         return {
             ...node,
-            x: `${Math.max(PADDING_X, Math.min(100 - PADDING_X, cx + jx)).toFixed(2)}%`,
+            x: `${Math.max(PADDING_X, Math.min(100 - PADDING_X, cx)).toFixed(2)}%`,
             y: `${Math.max(PADDING_Y, Math.min(100 - PADDING_Y, cy + jy)).toFixed(2)}%`,
         };
     });
