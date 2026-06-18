@@ -37,6 +37,7 @@ import {
     siAndroid,
     siAndroidstudio,
     siCodeigniter,
+    siCpanel,
 } from 'simple-icons';
 
 // ── Brand marks (official paths) ───────────────────────────────────────
@@ -66,6 +67,7 @@ const BRAND_PATHS = {
     android: siAndroid.path,
     androidstudio: siAndroidstudio.path,
     codeigniter: siCodeigniter.path,
+    cpanel: siCpanel.path,
 };
 
 // ── Concept icons (hand-drawn; no brand exists) ────────────────────────
