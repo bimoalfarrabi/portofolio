@@ -311,8 +311,8 @@ export default function ProjectModal({ project, tone, onClose }) {
                                                     rel="noopener noreferrer"
                                                     className={`inline-flex items-center gap-1.5 border px-3 py-1 text-[10px] font-medium uppercase tracking-[0.22em] transition-colors ${
                                                         isDark
-                                                            ? 'border-white/15 bg-white/[0.05] text-zinc-200 hover:border-white/40 hover:bg-white/10'
-                                                            : 'border-line bg-surface-2 text-ink-soft hover:border-ink hover:text-ink'
+                                                            ? 'border-white/30 bg-white/10 text-zinc-100 hover:border-white/60 hover:bg-white/20'
+                                                            : 'border-ink bg-ink text-surface-1 hover:bg-accent hover:border-accent'
                                                     }`}
                                                 >
                                                     <svg className="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -330,8 +330,8 @@ export default function ProjectModal({ project, tone, onClose }) {
                                                     rel="noopener noreferrer"
                                                     className={`inline-flex items-center gap-1.5 border px-3 py-1 text-[10px] font-medium uppercase tracking-[0.22em] transition-colors ${
                                                         isDark
-                                                            ? 'border-white/15 bg-white/[0.05] text-zinc-200 hover:border-white/40 hover:bg-white/10'
-                                                            : 'border-line bg-surface-2 text-ink-soft hover:border-ink hover:text-ink'
+                                                            ? 'border-white/30 bg-white/10 text-zinc-100 hover:border-white/60 hover:bg-white/20'
+                                                            : 'border-ink bg-ink text-surface-1 hover:bg-accent hover:border-accent'
                                                     }`}
                                                 >
                                                     <svg className="size-3" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
