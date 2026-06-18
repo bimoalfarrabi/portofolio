@@ -304,6 +304,25 @@ export default function ProjectModal({ project, tone, onClose }) {
                                             <div className={`inline-flex border px-3 py-1 text-[10px] font-medium uppercase tracking-[0.22em] ${isDark ? 'border-white/15 bg-white/[0.05] text-zinc-200' : 'border-line bg-surface-2 text-ink-soft'}`}>
                                                 STATUS: ACTIVE
                                             </div>
+                                            {project.web_url && (
+                                                <a
+                                                    href={project.web_url}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className={`inline-flex items-center gap-1.5 border px-3 py-1 text-[10px] font-medium uppercase tracking-[0.22em] transition-colors ${
+                                                        isDark
+                                                            ? 'border-white/15 bg-white/[0.05] text-zinc-200 hover:border-white/40 hover:bg-white/10'
+                                                            : 'border-line bg-surface-2 text-ink-soft hover:border-ink hover:text-ink'
+                                                    }`}
+                                                >
+                                                    <svg className="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                                                        <circle cx="12" cy="12" r="10" />
+                                                        <line x1="2" y1="12" x2="22" y2="12" />
+                                                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                                                    </svg>
+                                                    Website
+                                                </a>
+                                            )}
                                             {project.type === 'open' && project.repo_url && (
                                                 <a
                                                     href={project.repo_url}

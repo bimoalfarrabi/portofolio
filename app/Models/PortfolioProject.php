@@ -15,6 +15,7 @@ class PortfolioProject extends Model
         'title',
         'type',
         'repo_url',
+        'web_url',
         'category',
         'year',
         'image',

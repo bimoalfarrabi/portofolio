@@ -39,6 +39,12 @@
                     <x-admin.field-error name="repo_url" />
                     <span class="text-xs text-ink-mute">Link repository publik. Ditampilkan di halaman publik sebagai tombol.</span>
                 </div>
+                <label class="grid gap-2 sm:col-span-2">
+                    <span class="text-sm font-medium text-ink-soft">Website URL</span>
+                    <input name="web_url" value="{{ old('web_url', $project->web_url) }}" class="@error('web_url') border-warn @enderror border border-line bg-surface-1 px-4 py-3 text-sm outline-none transition-colors focus:border-ink-soft focus:ring-0" placeholder="https://example.com">
+                    <x-admin.field-error name="web_url" />
+                    <span class="text-xs text-ink-mute">Opsional. Jika diisi, tombol "Website" muncul di modal project publik.</span>
+                </label>
                 <label class="grid gap-2">
                     <span class="text-sm font-medium text-ink-soft">Category</span>
                     <input name="category" value="{{ old('category', $project->category) }}" class="@error('category') border-warn @enderror border border-line bg-surface-1 px-4 py-3 text-sm outline-none transition-colors focus:border-ink-soft focus:ring-0" placeholder="e.g. Web App, CLI Tool">

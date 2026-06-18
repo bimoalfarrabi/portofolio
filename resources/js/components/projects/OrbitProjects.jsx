@@ -24,6 +24,7 @@ function normalizeProjects(seedProjects, mode) {
             outcome: project.outcome,
             isFeatured: project.is_featured ?? false,
             repo_url: project.repo_url ?? null,
+            web_url: project.web_url ?? null,
         }))
         .sort((left, right) => {
             // Featured selalu di depan, sisanya urut by year
