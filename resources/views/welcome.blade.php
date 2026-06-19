@@ -49,6 +49,7 @@
     <body class="bg-surface-0 font-sans text-ink antialiased">
         <div id="app"></div>
         <script>
+            window.__LOCALE__ = @json($locale ?? 'id');
             window.__PORTFOLIO_DATA__ = @json($portfolioData ?? []);
         </script>
     </body>

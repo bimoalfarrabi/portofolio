@@ -1,0 +1,41 @@
+{
+    "nav.home": "Home",
+    "nav.projects": "Projects",
+    "nav.logs": "Logs",
+    "nav.collab": "Collaborate",
+    "nav.stats": "Stats",
+
+    "hero.greeting": "Hi, I'm",
+    "hero.cta": "View Projects",
+    "hero.collab": "Let's Collaborate",
+
+    "section.projects": "Projects",
+    "section.logs": "Logs",
+    "section.stats": "Stats",
+    "section.collab": "Collaborate",
+    "section.skills": "Skills",
+
+    "project.view": "View Project",
+    "project.repo": "Repository",
+    "project.stack": "Stack",
+    "project.approach": "Approach",
+    "project.outcome": "Outcome",
+    "project.type.open": "Open Source",
+    "project.type.client": "Client",
+    "project.type.personal": "Personal",
+
+    "collab.available": "Available for new projects",
+    "collab.busy": "Booked, but still reading messages",
+    "collab.send": "Send a Message",
+    "collab.name": "Name",
+    "collab.email": "Email",
+    "collab.message": "Message",
+    "collab.submit": "Send",
+    "collab.success": "Message sent!",
+    "collab.error": "Failed to send message. Please try again.",
+
+    "lang.switch": "ID",
+    "lang.current": "EN",
+
+    "footer.rights": "All rights reserved."
+}

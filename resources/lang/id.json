@@ -1,0 +1,41 @@
+{
+    "nav.home": "Beranda",
+    "nav.projects": "Proyek",
+    "nav.logs": "Log",
+    "nav.collab": "Kolaborasi",
+    "nav.stats": "Statistik",
+
+    "hero.greeting": "Halo, saya",
+    "hero.cta": "Lihat Proyek",
+    "hero.collab": "Mari Kolaborasi",
+
+    "section.projects": "Proyek",
+    "section.logs": "Log",
+    "section.stats": "Statistik",
+    "section.collab": "Kolaborasi",
+    "section.skills": "Keahlian",
+
+    "project.view": "Lihat Proyek",
+    "project.repo": "Repositori",
+    "project.stack": "Teknologi",
+    "project.approach": "Pendekatan",
+    "project.outcome": "Hasil",
+    "project.type.open": "Open Source",
+    "project.type.client": "Klien",
+    "project.type.personal": "Personal",
+
+    "collab.available": "Tersedia untuk proyek baru",
+    "collab.busy": "Sedang sibuk, tapi tetap membaca pesan",
+    "collab.send": "Kirim Pesan",
+    "collab.name": "Nama",
+    "collab.email": "Email",
+    "collab.message": "Pesan",
+    "collab.submit": "Kirim",
+    "collab.success": "Pesan terkirim!",
+    "collab.error": "Gagal mengirim pesan. Coba lagi.",
+
+    "lang.switch": "EN",
+    "lang.current": "ID",
+
+    "footer.rights": "Hak cipta dilindungi."
+}

@@ -23,11 +23,6 @@
                     <x-admin.field-error name="key" />
                 </label>
                 <label class="grid gap-2">
-                    <span class="text-sm font-medium text-ink-soft">Label <span class="text-accent">*</span></span>
-                    <input name="label" value="{{ old('label', $stat->label) }}" class="@error('label') border-warn @enderror border border-line bg-surface-1 px-4 py-3 text-sm outline-none transition-colors focus:border-ink-soft focus:ring-0" required placeholder="e.g. Projects Shipped">
-                    <x-admin.field-error name="label" />
-                </label>
-                <label class="grid gap-2">
                     <span class="text-sm font-medium text-ink-soft">Value <span class="text-accent">*</span></span>
                     <input name="value" value="{{ old('value', $stat->value) }}" class="@error('value') border-warn @enderror border border-line bg-surface-1 px-4 py-3 text-sm outline-none transition-colors focus:border-ink-soft focus:ring-0" required placeholder="e.g. 12+">
                     <x-admin.field-error name="value" />
@@ -38,13 +33,41 @@
                     <x-admin.field-error name="sort_order" />
                 </label>
             </div>
-            <label class="mt-5 grid gap-2">
-                <span class="text-sm font-medium text-ink-soft">Note</span>
-                <textarea name="note" rows="3" class="@error('note') border-warn @enderror border border-line bg-surface-1 px-4 py-3 text-sm leading-relaxed outline-none transition-colors focus:border-ink-soft focus:ring-0" placeholder="Catatan tambahan...">{{ old('note', $stat->note) }}</textarea>
-                <x-admin.field-error name="note" />
-            </label>
             <div class="mt-5">
                 <x-admin.checkbox-pill name="is_active" label="Active" :checked="old('is_active', $stat->is_active)" />
+            </div>
+        </x-admin.panel>
+
+        {{-- Konten bilingual --}}
+        <x-admin.panel label="Konten">
+            <x-admin.lang-tabs />
+
+            {{-- ID --}}
+            <div data-lang-panel="id" class="grid gap-5">
+                <label class="grid gap-2">
+                    <span class="text-sm font-medium text-ink-soft">Label (ID) <span class="text-accent">*</span></span>
+                    <input name="label" value="{{ old('label', $stat->label) }}" class="@error('label') border-warn @enderror border border-line bg-surface-1 px-4 py-3 text-sm outline-none transition-colors focus:border-ink-soft focus:ring-0" required placeholder="e.g. Proyek Selesai">
+                    <x-admin.field-error name="label" />
+                </label>
+                <label class="grid gap-2">
+                    <span class="text-sm font-medium text-ink-soft">Note (ID)</span>
+                    <textarea name="note" rows="3" class="@error('note') border-warn @enderror border border-line bg-surface-1 px-4 py-3 text-sm leading-relaxed outline-none transition-colors focus:border-ink-soft focus:ring-0" placeholder="Catatan tambahan...">{{ old('note', $stat->note) }}</textarea>
+                    <x-admin.field-error name="note" />
+                </label>
+            </div>
+
+            {{-- EN --}}
+            <div data-lang-panel="en" class="hidden grid gap-5">
+                <label class="grid gap-2">
+                    <span class="text-sm font-medium text-ink-soft">Label (EN)</span>
+                    <input name="label_en" value="{{ old('label_en', $stat->label_en) }}" class="@error('label_en') border-warn @enderror border border-line bg-surface-1 px-4 py-3 text-sm outline-none transition-colors focus:border-ink-soft focus:ring-0" placeholder="e.g. Projects Shipped">
+                    <x-admin.field-error name="label_en" />
+                </label>
+                <label class="grid gap-2">
+                    <span class="text-sm font-medium text-ink-soft">Note (EN)</span>
+                    <textarea name="note_en" rows="3" class="@error('note_en') border-warn @enderror border border-line bg-surface-1 px-4 py-3 text-sm leading-relaxed outline-none transition-colors focus:border-ink-soft focus:ring-0" placeholder="Additional note...">{{ old('note_en', $stat->note_en) }}</textarea>
+                    <x-admin.field-error name="note_en" />
+                </label>
             </div>
         </x-admin.panel>
 

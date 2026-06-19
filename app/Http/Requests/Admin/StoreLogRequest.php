@@ -32,8 +32,10 @@ class StoreLogRequest extends FormRequest
     {
         return [
             'title' => ['required', 'string', 'max:255'],
+            'title_en' => ['nullable', 'string', 'max:255'],
             'logged_at' => ['nullable', 'date'],
             'body' => ['nullable', 'string'],
+            'body_en' => ['nullable', 'string'],
             'tags' => ['array'],
             'tags.*' => ['string', 'max:50'],
             'sort_order' => ['nullable', 'integer', 'min:0'],

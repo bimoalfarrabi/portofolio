@@ -26,8 +26,10 @@ class StoreStatRequest extends FormRequest
         return [
             'key' => ['required', 'string', 'max:255'],
             'label' => ['required', 'string', 'max:255'],
+            'label_en' => ['nullable', 'string', 'max:255'],
             'value' => ['required', 'string', 'max:255'],
             'note' => ['nullable', 'string'],
+            'note_en' => ['nullable', 'string'],
             'sort_order' => ['nullable', 'integer', 'min:0'],
             'is_active' => ['boolean'],
         ];

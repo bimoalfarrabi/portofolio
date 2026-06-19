@@ -128,25 +128,55 @@
                 </div>
 
                 <label class="grid gap-2">
-                    <span class="text-sm font-medium text-ink-soft">Description</span>
-                    <textarea name="description" rows="3" class="@error('description') border-warn @enderror border border-line bg-surface-1 px-4 py-3 text-sm leading-relaxed outline-none transition-colors focus:border-ink-soft focus:ring-0" placeholder="Deskripsi singkat project...">{{ old('description', $project->description) }}</textarea>
-                    <x-admin.field-error name="description" />
-                </label>
-                <label class="grid gap-2">
-                    <span class="text-sm font-medium text-ink-soft">Approach</span>
-                    <textarea name="approach" rows="3" class="@error('approach') border-warn @enderror border border-line bg-surface-1 px-4 py-3 text-sm leading-relaxed outline-none transition-colors focus:border-ink-soft focus:ring-0" placeholder="Pendekatan yang digunakan...">{{ old('approach', $project->approach) }}</textarea>
-                    <x-admin.field-error name="approach" />
-                </label>
-                <label class="grid gap-2">
                     <span class="text-sm font-medium text-ink-soft">Stack</span>
                     <input name="stack" value="{{ old('stack', $stackValue) }}" class="@error('stack') border-warn @enderror border border-line bg-surface-1 px-4 py-3 text-sm outline-none transition-colors focus:border-ink-soft focus:ring-0" placeholder="Laravel, React, Tailwind (comma separated)">
                     <x-admin.field-error name="stack" />
                     <span class="text-xs text-ink-mute">Pisahkan dengan koma</span>
                 </label>
+            </div>
+
+            <x-admin.lang-tabs />
+
+            {{-- ID content --}}
+            <div data-lang-panel="id" class="mt-5 grid gap-5">
                 <label class="grid gap-2">
-                    <span class="text-sm font-medium text-ink-soft">Outcome</span>
+                    <span class="text-sm font-medium text-ink-soft">Description (ID)</span>
+                    <textarea name="description" rows="3" class="@error('description') border-warn @enderror border border-line bg-surface-1 px-4 py-3 text-sm leading-relaxed outline-none transition-colors focus:border-ink-soft focus:ring-0" placeholder="Deskripsi singkat project...">{{ old('description', $project->description) }}</textarea>
+                    <x-admin.field-error name="description" />
+                </label>
+                <label class="grid gap-2">
+                    <span class="text-sm font-medium text-ink-soft">Approach (ID)</span>
+                    <textarea name="approach" rows="3" class="@error('approach') border-warn @enderror border border-line bg-surface-1 px-4 py-3 text-sm leading-relaxed outline-none transition-colors focus:border-ink-soft focus:ring-0" placeholder="Pendekatan yang digunakan...">{{ old('approach', $project->approach) }}</textarea>
+                    <x-admin.field-error name="approach" />
+                </label>
+                <label class="grid gap-2">
+                    <span class="text-sm font-medium text-ink-soft">Outcome (ID)</span>
                     <textarea name="outcome" rows="3" class="@error('outcome') border-warn @enderror border border-line bg-surface-1 px-4 py-3 text-sm leading-relaxed outline-none transition-colors focus:border-ink-soft focus:ring-0" placeholder="Hasil yang dicapai...">{{ old('outcome', $project->outcome) }}</textarea>
                     <x-admin.field-error name="outcome" />
+                </label>
+            </div>
+
+            {{-- EN content --}}
+            <div data-lang-panel="en" class="hidden mt-5 grid gap-5">
+                <label class="grid gap-2">
+                    <span class="text-sm font-medium text-ink-soft">Title (EN)</span>
+                    <input name="title_en" value="{{ old('title_en', $project->title_en) }}" class="@error('title_en') border-warn @enderror border border-line bg-surface-1 px-4 py-3 text-sm outline-none transition-colors focus:border-ink-soft focus:ring-0" placeholder="Project name in English">
+                    <x-admin.field-error name="title_en" />
+                </label>
+                <label class="grid gap-2">
+                    <span class="text-sm font-medium text-ink-soft">Description (EN)</span>
+                    <textarea name="description_en" rows="3" class="@error('description_en') border-warn @enderror border border-line bg-surface-1 px-4 py-3 text-sm leading-relaxed outline-none transition-colors focus:border-ink-soft focus:ring-0" placeholder="Short project description...">{{ old('description_en', $project->description_en) }}</textarea>
+                    <x-admin.field-error name="description_en" />
+                </label>
+                <label class="grid gap-2">
+                    <span class="text-sm font-medium text-ink-soft">Approach (EN)</span>
+                    <textarea name="approach_en" rows="3" class="@error('approach_en') border-warn @enderror border border-line bg-surface-1 px-4 py-3 text-sm leading-relaxed outline-none transition-colors focus:border-ink-soft focus:ring-0" placeholder="Approach used...">{{ old('approach_en', $project->approach_en) }}</textarea>
+                    <x-admin.field-error name="approach_en" />
+                </label>
+                <label class="grid gap-2">
+                    <span class="text-sm font-medium text-ink-soft">Outcome (EN)</span>
+                    <textarea name="outcome_en" rows="3" class="@error('outcome_en') border-warn @enderror border border-line bg-surface-1 px-4 py-3 text-sm leading-relaxed outline-none transition-colors focus:border-ink-soft focus:ring-0" placeholder="Outcomes achieved...">{{ old('outcome_en', $project->outcome_en) }}</textarea>
+                    <x-admin.field-error name="outcome_en" />
                 </label>
             </div>
         </x-admin.panel>

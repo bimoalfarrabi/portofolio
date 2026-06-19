@@ -3,15 +3,19 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\HasTranslation;
 
 class PortfolioLog extends Model
 {
+    use HasTranslation;
     protected $table = 'portfolio_logs';
 
     protected $fillable = [
         'title',
+        'title_en',
         'logged_at',
         'body',
+        'body_en',
         'tags',
         'sort_order',
         'is_published',

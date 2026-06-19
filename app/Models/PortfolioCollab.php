@@ -3,20 +3,27 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\HasTranslation;
 
 class PortfolioCollab extends Model
 {
+    use HasTranslation;
     protected $table = 'portfolio_collab';
 
     protected $fillable = [
         'email',
         'available',
         'available_label',
+        'available_label_en',
         'busy_label',
+        'busy_label_en',
         'location',
+        'location_en',
         'time_zone',
         'time_zone_label',
+        'time_zone_label_en',
         'response_time',
+        'response_time_en',
         'channels',
     ];
 

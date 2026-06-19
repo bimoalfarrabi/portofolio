@@ -28,9 +28,14 @@
                     <x-admin.field-error name="email" />
                 </label>
                 <label class="grid gap-2">
-                    <span class="text-sm font-medium text-ink-soft">Response Time</span>
-                    <input name="response_time" value="{{ old('response_time', $collab->response_time) }}" class="@error('response_time') border-warn @enderror border border-line bg-surface-1 px-4 py-3 text-sm outline-none transition-colors focus:border-ink-soft focus:ring-0" placeholder="e.g. Usually replies within 24h">
+                    <span class="text-sm font-medium text-ink-soft">Response Time (ID)</span>
+                    <input name="response_time" value="{{ old('response_time', $collab->response_time) }}" class="@error('response_time') border-warn @enderror border border-line bg-surface-1 px-4 py-3 text-sm outline-none transition-colors focus:border-ink-soft focus:ring-0" placeholder="e.g. Biasanya balas dalam 24 jam">
                     <x-admin.field-error name="response_time" />
+                </label>
+                <label class="grid gap-2">
+                    <span class="text-sm font-medium text-ink-soft">Response Time (EN)</span>
+                    <input name="response_time_en" value="{{ old('response_time_en', $collab->response_time_en) }}" class="@error('response_time_en') border-warn @enderror border border-line bg-surface-1 px-4 py-3 text-sm outline-none transition-colors focus:border-ink-soft focus:ring-0" placeholder="e.g. Usually replies within 24h">
+                    <x-admin.field-error name="response_time_en" />
                 </label>
             </div>
         </x-admin.panel>
@@ -38,16 +43,33 @@
         {{-- Availability --}}
         <x-admin.panel label="Availability">
             <x-admin.checkbox-pill name="available" label="Available — terbuka untuk project baru" :checked="old('available', $collab->available)" />
-            <div class="mt-5 grid gap-5 sm:grid-cols-2">
+            <x-admin.lang-tabs class="mt-5" />
+
+            {{-- ID --}}
+            <div data-lang-panel="id" class="mt-5 grid gap-5 sm:grid-cols-2">
                 <label class="grid gap-2">
-                    <span class="text-sm font-medium text-ink-soft">Label saat available <span class="text-accent">*</span></span>
-                    <input name="available_label" value="{{ old('available_label', $collab->available_label) }}" class="@error('available_label') border-warn @enderror border border-line bg-surface-1 px-4 py-3 text-sm outline-none transition-colors focus:border-ink-soft focus:ring-0" required placeholder="Available for new projects">
+                    <span class="text-sm font-medium text-ink-soft">Label saat available (ID) <span class="text-accent">*</span></span>
+                    <input name="available_label" value="{{ old('available_label', $collab->available_label) }}" class="@error('available_label') border-warn @enderror border border-line bg-surface-1 px-4 py-3 text-sm outline-none transition-colors focus:border-ink-soft focus:ring-0" required placeholder="Tersedia untuk proyek baru">
                     <x-admin.field-error name="available_label" />
                 </label>
                 <label class="grid gap-2">
-                    <span class="text-sm font-medium text-ink-soft">Label saat busy <span class="text-accent">*</span></span>
-                    <input name="busy_label" value="{{ old('busy_label', $collab->busy_label) }}" class="@error('busy_label') border-warn @enderror border border-line bg-surface-1 px-4 py-3 text-sm outline-none transition-colors focus:border-ink-soft focus:ring-0" required placeholder="Booked, but still reading messages">
+                    <span class="text-sm font-medium text-ink-soft">Label saat busy (ID) <span class="text-accent">*</span></span>
+                    <input name="busy_label" value="{{ old('busy_label', $collab->busy_label) }}" class="@error('busy_label') border-warn @enderror border border-line bg-surface-1 px-4 py-3 text-sm outline-none transition-colors focus:border-ink-soft focus:ring-0" required placeholder="Sedang sibuk, tapi tetap membaca pesan">
                     <x-admin.field-error name="busy_label" />
+                </label>
+            </div>
+
+            {{-- EN --}}
+            <div data-lang-panel="en" class="hidden mt-5 grid gap-5 sm:grid-cols-2">
+                <label class="grid gap-2">
+                    <span class="text-sm font-medium text-ink-soft">Label saat available (EN)</span>
+                    <input name="available_label_en" value="{{ old('available_label_en', $collab->available_label_en) }}" class="@error('available_label_en') border-warn @enderror border border-line bg-surface-1 px-4 py-3 text-sm outline-none transition-colors focus:border-ink-soft focus:ring-0" placeholder="Available for new projects">
+                    <x-admin.field-error name="available_label_en" />
+                </label>
+                <label class="grid gap-2">
+                    <span class="text-sm font-medium text-ink-soft">Label saat busy (EN)</span>
+                    <input name="busy_label_en" value="{{ old('busy_label_en', $collab->busy_label_en) }}" class="@error('busy_label_en') border-warn @enderror border border-line bg-surface-1 px-4 py-3 text-sm outline-none transition-colors focus:border-ink-soft focus:ring-0" placeholder="Booked, but still reading messages">
+                    <x-admin.field-error name="busy_label_en" />
                 </label>
             </div>
         </x-admin.panel>
@@ -56,10 +78,17 @@
         <x-admin.panel label="Lokasi & Waktu">
             <div class="grid gap-5 sm:grid-cols-3">
                 <label class="grid gap-2">
-                    <span class="text-sm font-medium text-ink-soft">Based in</span>
+                    <span class="text-sm font-medium text-ink-soft">Based in (ID)</span>
                     <input name="location" value="{{ old('location', $collab->location) }}" class="@error('location') border-warn @enderror border border-line bg-surface-1 px-4 py-3 text-sm outline-none transition-colors focus:border-ink-soft focus:ring-0" placeholder="Indonesia">
                     <x-admin.field-error name="location" />
                 </label>
+                <label class="grid gap-2">
+                    <span class="text-sm font-medium text-ink-soft">Based in (EN)</span>
+                    <input name="location_en" value="{{ old('location_en', $collab->location_en) }}" class="@error('location_en') border-warn @enderror border border-line bg-surface-1 px-4 py-3 text-sm outline-none transition-colors focus:border-ink-soft focus:ring-0" placeholder="Indonesia">
+                    <x-admin.field-error name="location_en" />
+                </label>
+            </div>
+            <div class="mt-5 grid gap-5 sm:grid-cols-3">
                 <label class="grid gap-2">
                     <span class="text-sm font-medium text-ink-soft">Time Zone <span class="text-accent">*</span></span>
                     <input name="time_zone" value="{{ old('time_zone', $collab->time_zone) }}" list="tz-list" class="@error('time_zone') border-warn @enderror border border-line bg-surface-1 px-4 py-3 text-sm outline-none transition-colors focus:border-ink-soft focus:ring-0" required placeholder="Asia/Jakarta">
@@ -71,9 +100,14 @@
                     <x-admin.field-error name="time_zone" />
                 </label>
                 <label class="grid gap-2">
-                    <span class="text-sm font-medium text-ink-soft">Time Zone Label</span>
+                    <span class="text-sm font-medium text-ink-soft">Time Zone Label (ID)</span>
                     <input name="time_zone_label" value="{{ old('time_zone_label', $collab->time_zone_label) }}" class="@error('time_zone_label') border-warn @enderror border border-line bg-surface-1 px-4 py-3 text-sm outline-none transition-colors focus:border-ink-soft focus:ring-0" placeholder="GMT+7">
                     <x-admin.field-error name="time_zone_label" />
+                </label>
+                <label class="grid gap-2">
+                    <span class="text-sm font-medium text-ink-soft">Time Zone Label (EN)</span>
+                    <input name="time_zone_label_en" value="{{ old('time_zone_label_en', $collab->time_zone_label_en) }}" class="@error('time_zone_label_en') border-warn @enderror border border-line bg-surface-1 px-4 py-3 text-sm outline-none transition-colors focus:border-ink-soft focus:ring-0" placeholder="GMT+7">
+                    <x-admin.field-error name="time_zone_label_en" />
                 </label>
             </div>
         </x-admin.panel>

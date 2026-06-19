@@ -18,25 +18,36 @@ use App\Models\PortfolioSkill;
 use App\Models\PortfolioStat;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome', [
-        'portfolioData' => [
-            'projects' => PortfolioProject::query()->where('is_published', true)->orderBy('sort_order')->get(),
-            'skills' => PortfolioSkill::query()->where('is_active', true)->orderBy('sort_order')->get(),
-            'logs' => PortfolioLog::query()->where('is_published', true)->orderBy('sort_order')->get(),
-            'stats' => PortfolioStat::query()->where('is_active', true)->orderBy('sort_order')->get(),
-            'collab' => PortfolioCollab::current(),
-        ],
-    ]);
-});
+// Public routes — available as both / (ID) and /en/ (EN)
+// The SetLocale middleware reads the first URL segment to set the locale.
+$publicRoutes = function () {
+    Route::get('/', function () {
+        return view('welcome', [
+            'locale' => app()->getLocale(),
+            'portfolioData' => [
+                'projects' => PortfolioProject::query()->where('is_published', true)->orderBy('sort_order')->get(),
+                'skills' => PortfolioSkill::query()->where('is_active', true)->orderBy('sort_order')->get(),
+                'logs' => PortfolioLog::query()->where('is_published', true)->orderBy('sort_order')->get(),
+                'stats' => PortfolioStat::query()->where('is_active', true)->orderBy('sort_order')->get(),
+                'collab' => PortfolioCollab::current(),
+            ],
+        ]);
+    })->name('home');
 
-Route::get('/p/{project}', [ShareProjectController::class, 'show'])
-    ->name('share.project');
-Route::get('/p/{project}/og.png', [ShareProjectController::class, 'image'])
-    ->name('share.project.image');
+    Route::get('/p/{project}', [ShareProjectController::class, 'show'])
+        ->name('share.project');
+    Route::get('/p/{project}/og.png', [ShareProjectController::class, 'image'])
+        ->name('share.project.image');
 
-Route::post('/collab/messages', [CollabMessageController::class, 'store'])
-    ->name('collab.messages.store');
+    Route::post('/collab/messages', [CollabMessageController::class, 'store'])
+        ->name('collab.messages.store');
+};
+
+// ID (default) — no prefix
+Route::middleware('set.locale')->group($publicRoutes);
+
+// EN — /en prefix
+Route::prefix('en')->name('en.')->middleware('set.locale')->group($publicRoutes);
 
 Route::get('/login', fn () => redirect()->route('admin.login'))->name('login');
 

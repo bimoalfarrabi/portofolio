@@ -6,13 +6,16 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use App\Traits\HasTranslation;
 
 class PortfolioProject extends Model
 {
+    use HasTranslation;
     protected $table = 'portfolio_projects';
 
     protected $fillable = [
         'title',
+        'title_en',
         'type',
         'repo_url',
         'web_url',
@@ -21,9 +24,12 @@ class PortfolioProject extends Model
         'image',
         'gallery',
         'description',
+        'description_en',
         'approach',
+        'approach_en',
         'stack',
         'outcome',
+        'outcome_en',
         'x_position',
         'y_position',
         'size',

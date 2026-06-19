@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'motion/react';
+import { LanguageSwitch } from '../shared';
 
 const navLinks = [
     { label: 'Progress', href: '#progress' },
@@ -100,6 +101,7 @@ export default function Navbar() {
                 </motion.a>
 
                 <div className="hidden items-center gap-1 md:flex">
+                    <LanguageSwitch className="mr-2" />
                     {navLinks.map((link) => {
                         const isActive = activeLink === link.href;
                         return (
@@ -159,6 +161,7 @@ export default function Navbar() {
                         className="overflow-hidden border-t border-line bg-surface-0 md:hidden"
                     >
                         <div className="flex flex-col gap-1 px-5 py-5">
+                            <LanguageSwitch className="px-4 py-2" />
                             {navLinks.map((link) => {
                                 const isActive = activeLink === link.href;
                                 return (
