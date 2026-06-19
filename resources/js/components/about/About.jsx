@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'motion/react';
 import AstronautDots from './AstronautDots';
+import { useTranslation } from '../../hooks/useLocale';
 
 export default function About() {
+    const { t } = useTranslation();
     const [profileActive, setProfileActive] = useState(false);
     const [isTouchDevice, setIsTouchDevice] = useState(false);
     const sectionRef = useRef(null);
@@ -59,24 +61,21 @@ export default function About() {
                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                     className="mx-auto max-w-3xl text-center"
                 >
-                    <p className="eng-label mb-3">Origin signal · 03</p>
+                    <p className="eng-label mb-3">{t('about.label')}</p>
                     <h2 className="text-[clamp(2.4rem,6vw,4.4rem)] font-semibold leading-[0.98] tracking-[-0.05em] text-ink">
-                        Hai, saya
-                        <span className="block text-accent">Bimo Alfarrabi.</span>
+                        {t('about.headline')}
+                        <span className="block text-accent">{t('about.name')}</span>
                     </h2>
                     <p className="mt-6 text-base leading-8 text-ink-mute">
-                        Saya seorang pengembang &mdash; pakai Laravel di back-end, React/Vue/Blade di front-end, dan Kotlin untuk Android.
-                        Laravel jadi pilihan utama bukan karena ikut-ikutan, tapi karena sudah terbiasa dan terbukti produktif untuk kebanyakan project web.
-                        Suka bikin situs web yang enak dilihat, terasa bernapas, dan selesai tepat waktu.
+                        {t('about.bio.1')}
                     </p>
                     <p className="mt-4 text-base leading-8 text-ink-mute">
-                        Yang saya cari bukan &ldquo;skill set paling lengkap&rdquo;, tapi cara kerja yang masuk akal,
-                        desain yang tidak berisik, dan project yang benar-benar selesai.
+                        {t('about.bio.2')}
                     </p>
                     <p className="mt-8 eng-label">
                         {isTouchDevice
-                            ? (profileActive ? 'Ketuk lagi untuk sembunyikan siluet' : 'Ketuk bagian ini untuk menampilkan siluet profil')
-                            : 'Arahkan kursor ke sini untuk menampilkan siluet profil'
+                            ? (profileActive ? t('about.hover.touch.hide') : t('about.hover.touch.show'))
+                            : t('about.hover.desktop')
                         }
                     </p>
                 </motion.div>
@@ -172,7 +171,7 @@ export default function About() {
                                 transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
                                 className="size-1.5 rounded-full bg-success"
                             />
-                            Tersedia
+                            {t('about.available')}
                         </span>
                     </div>
                 </motion.div>

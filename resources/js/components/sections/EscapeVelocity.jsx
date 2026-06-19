@@ -1,6 +1,8 @@
 import { motion } from 'motion/react';
+import { useTranslation } from '../../hooks/useLocale';
 
 export default function EscapeVelocity({ stats = [] }) {
+    const { t } = useTranslation();
     const activeStats = stats.map((stat) => ({ label: stat.label, value: stat.value, note: stat.note ?? '' }));
 
     return (
@@ -17,14 +19,14 @@ export default function EscapeVelocity({ stats = [] }) {
                     className="mb-12 flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between"
                 >
                     <div>
-                        <p className="eng-label mb-3">SYS_TELEMETRY · 07</p>
+                        <p className="eng-label mb-3">{t('escape.label')}</p>
                         <h2 className="max-w-3xl text-[clamp(2.4rem,6vw,4.4rem)] font-semibold leading-[0.98] tracking-[-0.05em] text-ink">
-                            Statistik kecil,
-                            <span className="block text-ink-faint">sinyal <span className="text-accent">nyata</span>.</span>
+                            {t('escape.headline')}
+                            <span className="block text-ink-faint">{t('escape.headline.sub')} <span className="text-accent">{t('escape.headline.accent')}</span>.</span>
                         </h2>
                     </div>
                     <p className="max-w-sm text-sm leading-7 text-ink-mute">
-                        No fake skill percentages. Cuma beberapa indikator kecil tentang arah dan cara kerja.
+                        {t('escape.desc')}
                     </p>
                 </motion.div>
 

@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from 'motion/react';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { BrandIcon } from '../shared';
+import { useTranslation } from '../../hooks/useLocale';
 
 const DEFAULTS = {
     email: 'bimoalfarrabi24@gmail.com',
@@ -80,6 +81,7 @@ function useLocalClock(timeZone) {
 }
 
 export default function Collab({ collab }) {
+    const { t } = useTranslation();
     const profile = useMemo(() => normalizeCollab(collab), [collab]);
     const [copied, setCopied] = useState(false);
     const { time: localTime, date: localDate, dayProgress } = useLocalClock(profile.timeZone);
@@ -131,12 +133,12 @@ export default function Collab({ collab }) {
                 elapsed,
             });
             setFormState('success');
-            setFeedback(response?.data?.message ?? 'Pesan terkirim. Terima kasih.');
+            setFeedback(response?.data?.message ?? t('collab.success'));
             setForm({ name: '', email: '', message: '', company: '' });
         } catch (error) {
             const data = error?.response?.data;
             setFieldErrors(data?.errors ?? {});
-            setFeedback(data?.message ?? 'Gagal mengirim pesan. Coba lagi nanti.');
+            setFeedback(data?.message ?? t('collab.error'));
             setFormState('error');
         }
     };
@@ -160,14 +162,14 @@ export default function Collab({ collab }) {
                     className="mb-12 flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between"
                 >
                     <div>
-                        <p className="eng-label mb-3">SYS_COMMS · 08</p>
+                        <p className="eng-label mb-3">{t('collab.label')}</p>
                         <h2 className="max-w-3xl text-[clamp(2.4rem,6vw,4.4rem)] font-semibold leading-[0.98] tracking-[-0.05em] text-ink">
-                            Punya sinyal
-                            <span className="block text-ink-faint">yang layak <span className="text-accent">dikirim</span>?</span>
+                            {t('collab.headline')}
+                            <span className="block text-ink-faint">{t('collab.headline.sub')} <span className="text-accent">{t('collab.headline.accent')}</span>?</span>
                         </h2>
                     </div>
                     <p className="max-w-sm text-sm leading-7 text-ink-mute">
-                        Punya project, kolaborasi, atau ide yang ingin diuji? Kirim sinyalnya. Saya terbuka untuk obrolan yang menarik.
+                        {t('collab.desc')}
                     </p>
                 </motion.div>
 
@@ -207,14 +209,14 @@ export default function Collab({ collab }) {
                                 className="inline-flex items-center justify-center gap-2 bg-ink px-7 py-3.5 text-sm font-medium uppercase tracking-[0.16em] text-surface-1 transition-colors duration-200 hover:bg-accent"
                             >
                                 <span className="font-mono text-xs">[TX]</span>
-                                Kirim pesan
+                                {t('collab.send')}
                             </a>
                             <button
                                 type="button"
                                 onClick={handleCopy}
                                 className="inline-flex items-center justify-center gap-2 border border-line bg-surface-1 px-7 py-3.5 text-sm font-medium uppercase tracking-[0.16em] text-ink-soft transition-colors duration-200 hover:border-ink hover:text-ink"
                             >
-                                {copied ? 'Tersalin' : 'Salin email'}
+                                {copied ? t('collab.copied') : t('collab.copy')}
                             </button>
                             <button
                                 type="button"
@@ -223,7 +225,7 @@ export default function Collab({ collab }) {
                                 aria-expanded={formOpen}
                                 aria-controls="collab-form"
                             >
-                                {formOpen ? 'Tutup form' : 'Gunakan form'}
+                                {formOpen ? t('collab.form.close') : t('collab.form.open')}
                             </button>
                         </div>
                         {profile.responseTime && (
@@ -257,56 +259,56 @@ export default function Collab({ collab }) {
                                     noValidate
                                 >
                                     <div className="mt-8 border border-line bg-surface-2 p-5 sm:p-6">
-                                        <p className="eng-label mb-4">TRANSMISSION_FORM</p>
+                                        <p className="eng-label mb-4">{t('collab.form.label')}</p>
 
-                                        <div className="grid gap-3 sm:grid-cols-2">
-                                            <label className="grid gap-1.5">
-                                                <span className="eng-label">Name</span>
-                                                <input
-                                                    type="text"
-                                                    name="name"
-                                                    autoComplete="name"
-                                                    value={form.name}
-                                                    onChange={updateField('name')}
-                                                    required
-                                                    maxLength={120}
-                                                    className={inputClass(fieldErrors.name)}
-                                                    placeholder="Siapa yang mengirim?"
-                                                />
-                                                {fieldErrors.name && <span className="text-xs text-accent">{fieldErrors.name[0]}</span>}
-                                            </label>
-                                            <label className="grid gap-1.5">
-                                                <span className="eng-label">Email</span>
-                                                <input
-                                                    type="email"
-                                                    name="email"
-                                                    autoComplete="email"
-                                                    value={form.email}
-                                                    onChange={updateField('email')}
-                                                    required
-                                                    maxLength={255}
-                                                    className={inputClass(fieldErrors.email)}
-                                                    placeholder="nama@email.com"
-                                                />
-                                                {fieldErrors.email && <span className="text-xs text-accent">{fieldErrors.email[0]}</span>}
-                                            </label>
-                                        </div>
+                                         <div className="grid gap-3 sm:grid-cols-2">
+                                             <label className="grid gap-1.5">
+                                                 <span className="eng-label">{t('collab.form.name')}</span>
+                                                 <input
+                                                     type="text"
+                                                     name="name"
+                                                     autoComplete="name"
+                                                     value={form.name}
+                                                     onChange={updateField('name')}
+                                                     required
+                                                     maxLength={120}
+                                                     className={inputClass(fieldErrors.name)}
+                                                     placeholder={t('collab.form.name.placeholder')}
+                                                 />
+                                                 {fieldErrors.name && <span className="text-xs text-accent">{fieldErrors.name[0]}</span>}
+                                             </label>
+                                             <label className="grid gap-1.5">
+                                                 <span className="eng-label">{t('collab.form.email')}</span>
+                                                 <input
+                                                     type="email"
+                                                     name="email"
+                                                     autoComplete="email"
+                                                     value={form.email}
+                                                     onChange={updateField('email')}
+                                                     required
+                                                     maxLength={255}
+                                                     className={inputClass(fieldErrors.email)}
+                                                     placeholder="nama@email.com"
+                                                 />
+                                                 {fieldErrors.email && <span className="text-xs text-accent">{fieldErrors.email[0]}</span>}
+                                             </label>
+                                         </div>
 
-                                        <label className="mt-3 grid gap-1.5">
-                                            <span className="eng-label">Message</span>
-                                            <textarea
-                                                name="message"
-                                                rows={5}
-                                                value={form.message}
-                                                onChange={updateField('message')}
-                                                required
-                                                minLength={10}
-                                                maxLength={4000}
-                                                className={inputClass(fieldErrors.message)}
-                                                placeholder="Cerita singkat soal project, timeline, atau ide yang ingin dibahas."
-                                            />
-                                            {fieldErrors.message && <span className="text-xs text-accent">{fieldErrors.message[0]}</span>}
-                                        </label>
+                                         <label className="mt-3 grid gap-1.5">
+                                             <span className="eng-label">{t('collab.form.message')}</span>
+                                             <textarea
+                                                 name="message"
+                                                 rows={5}
+                                                 value={form.message}
+                                                 onChange={updateField('message')}
+                                                 required
+                                                 minLength={10}
+                                                 maxLength={4000}
+                                                 className={inputClass(fieldErrors.message)}
+                                                 placeholder={t('collab.form.message.placeholder')}
+                                             />
+                                             {fieldErrors.message && <span className="text-xs text-accent">{fieldErrors.message[0]}</span>}
+                                         </label>
 
                                         {/* Honeypot */}
                                         <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
@@ -322,9 +324,9 @@ export default function Collab({ collab }) {
                                                 disabled={formState === 'sending'}
                                                 className="inline-flex items-center justify-center gap-2 bg-ink px-6 py-3 text-sm font-medium uppercase tracking-[0.16em] text-surface-1 transition-colors duration-200 hover:bg-accent disabled:cursor-not-allowed disabled:opacity-60"
                                             >
-                                                {formState === 'sending' ? 'Mengirim...' : 'Kirim'}
-                                            </button>
-                                             <p className="eng-label">Terkirim ke email saya + tercatat di Mission Control.</p>
+                                                 {formState === 'sending' ? t('collab.form.sending') : t('collab.form.submit')}
+                                             </button>
+                                              <p className="eng-label">{t('collab.form.note')}</p>
                                         </div>
 
                                         {feedback && (
@@ -367,7 +369,7 @@ export default function Collab({ collab }) {
 
                         <div className="mt-7">
                             <div className="flex items-center justify-between">
-                                <span className="eng-label">Progres hari</span>
+                                <span className="eng-label">{t('collab.day.progress')}</span>
                                 <span className="font-mono text-[11px] tabular-nums text-ink-mute">{Math.round(dayProgress * 100)}%</span>
                             </div>
                             <div className="mt-2 h-1.5 overflow-hidden border border-line bg-surface-2">

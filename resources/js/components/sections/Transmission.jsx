@@ -1,4 +1,5 @@
 import { motion } from 'motion/react';
+import { useTranslation } from '../../hooks/useLocale';
 
 const containerVariants = {
     hidden: {},
@@ -11,6 +12,7 @@ const itemVariants = {
 };
 
 export default function Transmission({ logs = [] }) {
+    const { t } = useTranslation();
     const transmissions = logs.map((log, index) => ({
         id: logs.length - index,
         text: log.body || log.title,
@@ -28,7 +30,7 @@ export default function Transmission({ logs = [] }) {
                 className="relative mx-auto max-w-3xl"
             >
                 <motion.div variants={itemVariants} className="mb-4 flex items-center justify-between">
-                    <p className="eng-label">SYS_LOG · 04</p>
+                    <p className="eng-label">{t('transmission.label')}</p>
                     <span className="eng-label">CH // OPEN</span>
                 </motion.div>
 
@@ -36,9 +38,9 @@ export default function Transmission({ logs = [] }) {
                     variants={itemVariants}
                     className="mb-12 text-[clamp(2rem,5vw,3.4rem)] font-semibold leading-[1.05] tracking-[-0.04em] text-ink"
                 >
-                    Misi berjalan.
+                    {t('transmission.headline')}
                     <br />
-                    <span className="text-ink-faint">Log <span className="text-accent">dicatat</span>.</span>
+                    <span className="text-ink-faint">{t('transmission.headline.sub')} <span className="text-accent">{t('transmission.headline.accent')}</span>.</span>
                 </motion.h2>
 
                 <div className="border border-line bg-surface-1">
@@ -60,7 +62,7 @@ export default function Transmission({ logs = [] }) {
                 </div>
 
                 <motion.p variants={itemVariants} className="mt-6 eng-label">
-                    Sinyal lainnya akan segera hadir.
+                    {t('transmission.footer')}
                 </motion.p>
             </motion.div>
         </section>

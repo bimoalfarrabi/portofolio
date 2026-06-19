@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { OrbitVisual } from '../shared';
+import { useTranslation } from '../../hooks/useLocale';
 
 const copyVariants = {
     hidden: { y: 24, opacity: 0 },
@@ -11,6 +12,8 @@ const copyVariants = {
 };
 
 export default function Hero() {
+    const { t } = useTranslation();
+
     return (
         <section
             id="intro"
@@ -38,7 +41,7 @@ export default function Hero() {
                             <span className="absolute inset-0 rounded-full bg-accent/35 starfield-blip" />
                             <span className="relative size-1.5 rounded-full bg-accent" />
                         </span>
-                        <span className="eng-label !text-ink">SIGNAL_LOCKED</span>
+                        <span className="eng-label !text-ink">{t('hero.badge')}</span>
                     </motion.div>
 
                     <motion.h1
@@ -48,8 +51,8 @@ export default function Hero() {
                         custom={0.18}
                         className="max-w-4xl text-[clamp(3.4rem,9.4vw,7.8rem)] font-semibold leading-[0.9] tracking-[-0.05em] text-ink"
                     >
-                        Developer web & Android,
-                        <span className="block text-ink-faint">pencerita <span className="text-accent">visual</span>.</span>
+                        {t('hero.headline')}
+                        <span className="block text-ink-faint">{t('hero.headline.sub')} <span className="text-accent">{t('hero.headline.accent')}</span>.</span>
                     </motion.h1>
 
                     <motion.p
@@ -59,7 +62,7 @@ export default function Hero() {
                         custom={0.34}
                         className="mt-8 max-w-xl text-lg leading-8 text-ink-mute sm:text-xl"
                     >
-                        Bukan portofolio template. Ruang eksperimen: progres, proses, dan project ditampilkan lewat pola visual yang lebih terasa seperti instrumen daripada halaman perkenalan.
+                        {t('hero.sub')}
                     </motion.p>
 
                     <motion.div
@@ -74,7 +77,7 @@ export default function Hero() {
                             className="group inline-flex items-center justify-center gap-2 bg-ink px-7 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-surface-1 transition-colors duration-200 hover:bg-accent"
                         >
                             <span className="font-mono text-xs">[01]</span>
-                            Mulai sinyal
+                            {t('hero.cta.primary')}
                             <svg className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
                                 <path d="M5 12h14" />
                                 <path d="m13 6 6 6-6 6" />
@@ -85,7 +88,7 @@ export default function Hero() {
                             className="inline-flex items-center justify-center gap-2 border border-line bg-surface-1 px-7 py-3.5 text-sm font-medium uppercase tracking-[0.18em] text-ink transition-colors duration-200 hover:border-ink"
                         >
                             <span className="font-mono text-xs text-ink-mute">[02]</span>
-                            Lihat orbit
+                            {t('hero.cta.secondary')}
                         </a>
                     </motion.div>
 
@@ -97,9 +100,9 @@ export default function Hero() {
                         className="mt-14 grid max-w-md grid-cols-3 border border-line"
                     >
                         {[
-                            { k: 'STATUS', v: 'Live', accent: true },
-                            { k: 'STACK', v: 'Laravel · React' },
-                            { k: 'LOC', v: 'WIB · GMT+7' },
+                            { k: t('hero.stat.status'), v: t('hero.stat.status.value'), accent: true },
+                            { k: t('hero.stat.stack'), v: 'Laravel · React' },
+                            { k: t('hero.stat.loc'), v: 'WIB · GMT+7' },
                         ].map((item, i) => (
                             <div
                                 key={item.k}

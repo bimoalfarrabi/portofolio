@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { motion } from 'motion/react';
 import { OrbitVisual, StitchBackground } from '../shared';
 import { useHoliday } from '../../hooks/useHoliday';
+import { useTranslation } from '../../hooks/useLocale';
 
 const timeZone = document.querySelector('meta[name="timezone"]')?.content || 'Asia/Jakarta';
 
@@ -53,6 +54,7 @@ function isSundayInWib() {
 }
 
 export default function YearProgress() {
+    const { t } = useTranslation();
     const [now, setNow] = useState(() => new Date());
     const { holiday, loading } = useHoliday();
 
@@ -83,13 +85,13 @@ export default function YearProgress() {
                 <span className="frame-corner br" />
 
                 <div className="mb-10 flex items-center justify-between">
-                    <span className="eng-label">SYS_PROGRESS · 02</span>
+                    <span className="eng-label">{t('progress.label')}</span>
                     <span className="eng-label">CYCLE // {data.year}</span>
                 </div>
 
                 <div className="flex flex-col gap-12 lg:flex-row lg:items-end lg:justify-between">
                     <div className="space-y-3">
-                        <p className="eng-label">Year Progress</p>
+                        <p className="eng-label">{t('progress.bar.label')}</p>
                         <h1 className="text-[clamp(4rem,14vw,9rem)] font-semibold leading-[0.82] tracking-[-0.05em] text-ink">
                             {data.percentage.toFixed(2)}<span className="text-accent">%</span>
                         </h1>
@@ -114,10 +116,10 @@ export default function YearProgress() {
 
                 <div className="mt-16">
                     <div className="mb-4 flex items-center justify-between font-mono text-xs uppercase tracking-[0.16em] text-ink-mute">
-                        <span>Day {data.day} / {data.totalDays}</span>
+                        <span>{t('progress.day')} {data.day} / {data.totalDays}</span>
                         <span>
-                            {data.daysRemaining} days left
-                            <span className="ml-2 text-ink-faint">· {data.hoursRemaining.toLocaleString()} hrs</span>
+                            {data.daysRemaining} {t('progress.days.left')}
+                            <span className="ml-2 text-ink-faint">· {data.hoursRemaining.toLocaleString()} {t('progress.hrs')}</span>
                         </span>
                     </div>
 
