@@ -74,7 +74,7 @@ const BRAND_PATHS = {
     codeigniter: siCodeigniter.path,
     cpanel: siCpanel.path,
     html: siHtml5.path,
-    css: siCss3.path,
+    css: siCss.path,
     bootstrap: siBootstrap.path,
     linux: siLinux.path,
     jetpackcompose: siJetpackcompose.path,
