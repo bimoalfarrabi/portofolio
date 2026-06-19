@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 
 /**
- * LanguageSwitch — toggle between ID (default) and EN (/en/...).
+ * LanguageSwitch — bracket instrument style: [ACTIVE] → [TARGET]
  * Reads current locale from window.__LOCALE__ set by Blade.
- * On switch: redirects to the equivalent URL in the other locale.
  */
 export default function LanguageSwitch({ className = '' }) {
     const [locale, setLocale] = useState(() => window.__LOCALE__ ?? 'id');
@@ -19,28 +18,37 @@ export default function LanguageSwitch({ className = '' }) {
 
         let newPath;
         if (current === 'id') {
-            // ID → EN: prepend /en
             newPath = '/en' + (pathname === '/' ? '' : pathname);
         } else {
-            // EN → ID: remove /en prefix
             newPath = pathname.replace(/^\/en/, '') || '/';
         }
 
         window.location.href = newPath + search;
     }
 
-    const targetLang = locale === 'id' ? 'EN' : 'ID';
+    const isId = locale === 'id';
 
     return (
         <button
             type="button"
             onClick={switchLocale}
-            aria-label={`Switch language to ${targetLang}`}
-            className={`inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-ink-soft transition-colors hover:text-ink ${className}`}
+            aria-label={`Switch language to ${isId ? 'EN' : 'ID'}`}
+            className={`group inline-flex items-center border border-line bg-surface-1 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.18em] transition-all duration-200 hover:border-accent/60 hover:bg-surface-2 active:scale-[0.97] ${className}`}
         >
-            <span className="text-ink-mute">{locale.toUpperCase()}</span>
-            <span className="text-ink-mute opacity-40">/</span>
-            <span className="text-ink">{targetLang}</span>
+            {/* ID label */}
+            <span className={isId ? 'text-accent' : 'text-ink-mute'}>
+                ID
+            </span>
+
+            {/* Arrow — points toward active locale, vertically centered */}
+            <span className="mx-1.5 -translate-y-px text-sm text-ink-faint transition-colors duration-200 group-hover:text-ink-mute">
+                {isId ? '←' : '→'}
+            </span>
+
+            {/* EN label */}
+            <span className={!isId ? 'text-accent' : 'text-ink-mute'}>
+                EN
+            </span>
         </button>
     );
 }
