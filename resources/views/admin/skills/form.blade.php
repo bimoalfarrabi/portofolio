@@ -62,14 +62,7 @@
         </x-admin.panel>
 
         <x-admin.panel label="Meta">
-            <div class="grid gap-5 sm:grid-cols-[1fr_auto] sm:items-end">
-                <label class="grid gap-2">
-                    <span class="text-sm font-medium text-ink-soft">Sort Order</span>
-                    <input type="number" min="0" name="sort_order" value="{{ old('sort_order', $skill->sort_order ?? 0) }}" class="@error('sort_order') border-warn @enderror border border-line bg-surface-1 px-4 py-3 text-sm outline-none transition-colors focus:border-ink-soft focus:ring-0">
-                    <x-admin.field-error name="sort_order" />
-                </label>
-                <x-admin.checkbox-pill name="is_active" label="Active" :checked="old('is_active', $skill->is_active)" />
-            </div>
+            <x-admin.checkbox-pill name="is_active" label="Active" :checked="old('is_active', $skill->is_active)" />
         </x-admin.panel>
 
         <x-admin.submit-bar :cancel="route('admin.skills.index')" label="Simpan Skill" />
