@@ -43,6 +43,7 @@ import {
     siBootstrap,
     siLinux,
     siJetpackcompose,
+    siArchlinux,
 } from 'simple-icons';
 
 // ── Brand marks (official paths) ───────────────────────────────────────
@@ -78,6 +79,7 @@ const BRAND_PATHS = {
     bootstrap: siBootstrap.path,
     linux: siLinux.path,
     jetpackcompose: siJetpackcompose.path,
+    archlinux: siArchlinux.path,
 };
 
 // ── Concept icons (hand-drawn; no brand exists) ────────────────────────
@@ -181,6 +183,20 @@ const CONCEPT_ICONS = {
             <path d="M8 19 L12 21 L16 19" />
         </g>
     ),
+    // CachyOS — simplified from official SVG: hexagonal body with
+    // three accent circles (top-right corner decoration).
+    cachyos: (
+        <g fill="currentColor">
+            {/* Main hexagon body */}
+            <path d="M6.5 2h5.5l4 6.9-4 7.1H6.5l-4-7.1Z" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" />
+            {/* Inner highlight line (left edge) */}
+            <path d="M6.5 2 2.5 8.9l4 7.1" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+            {/* Three accent circles top-right */}
+            <circle cx="17.5" cy="5" r="1.1" />
+            <circle cx="15.5" cy="3" r="0.8" />
+            <circle cx="18.5" cy="3" r="0.5" />
+        </g>
+    ),
     // LinkedIn — hand-drawn (simple-icons removed it for trademark reasons).
     // Stylised "in" mark inside a rounded square.
     linkedin: (
@@ -232,6 +248,10 @@ const ALIASES = {
     html5: 'html',
     css3: 'css',
     'jetpack compose': 'jetpackcompose',
+    arch: 'archlinux',
+    'arch linux': 'archlinux',
+    cachy: 'cachyos',
+    'cachy os': 'cachyos',
 };
 
 function normalize(name) {
