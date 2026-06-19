@@ -51,8 +51,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/logout', [AuthController::class, 'destroy'])->name('logout');
 
         Route::resource('projects', ProjectController::class)->except(['show']);
-        Route::resource('skills', SkillController::class)->except(['show']);
         Route::patch('/skills/reorder', [SkillController::class, 'reorder'])->name('skills.reorder');
+        Route::resource('skills', SkillController::class)->except(['show']);
         Route::resource('logs', LogController::class)->except(['show']);
         Route::resource('stats', StatController::class)->except(['show']);
         Route::resource('users', UserController::class)->except(['show']);
