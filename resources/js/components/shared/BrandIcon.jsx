@@ -38,6 +38,11 @@ import {
     siAndroidstudio,
     siCodeigniter,
     siCpanel,
+    siHtml5,
+    siCss,
+    siBootstrap,
+    siLinux,
+    siJetpackcompose,
 } from 'simple-icons';
 
 // ── Brand marks (official paths) ───────────────────────────────────────
@@ -68,6 +73,11 @@ const BRAND_PATHS = {
     androidstudio: siAndroidstudio.path,
     codeigniter: siCodeigniter.path,
     cpanel: siCpanel.path,
+    html: siHtml5.path,
+    css: siCss3.path,
+    bootstrap: siBootstrap.path,
+    linux: siLinux.path,
+    jetpackcompose: siJetpackcompose.path,
 };
 
 // ── Concept icons (hand-drawn; no brand exists) ────────────────────────
@@ -219,6 +229,9 @@ const ALIASES = {
     'laravel blade': 'blade',
     'android studio': 'androidstudio',
     ci: 'codeigniter',
+    html5: 'html',
+    css3: 'css',
+    'jetpack compose': 'jetpackcompose',
 };
 
 function normalize(name) {
