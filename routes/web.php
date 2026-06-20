@@ -36,7 +36,16 @@ $publicRoutes = function () {
                 'skills' => PortfolioSkill::query()->where('is_active', true)->orderBy('sort_order')->get(),
                 'logs' => PortfolioLog::query()->where('is_published', true)->orderBy('sort_order')->get(),
                 'stats' => PortfolioStat::query()->where('is_active', true)->orderBy('sort_order')->get(),
-                'collab' => PortfolioCollab::current(),
+                'collab' => (function () {
+                        $c = PortfolioCollab::current();
+                        return array_merge($c->toArray(), [
+                            'available_label'   => $c->trans('available_label'),
+                            'busy_label'        => $c->trans('busy_label'),
+                            'location'          => $c->trans('location'),
+                            'time_zone_label'   => $c->trans('time_zone_label'),
+                            'response_time'     => $c->trans('response_time'),
+                        ]);
+                    })(),
             ],
         ]);
     })->name('home');
