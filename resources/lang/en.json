@@ -71,5 +71,20 @@
     "lang.switch": "ID",
     "lang.current": "EN",
 
-    "footer.rights": "All rights reserved."
+    "footer.rights": "All rights reserved.",
+
+    "constellation.headline": "Skills, projects, and tools",
+    "constellation.headline.sub": "connected in one",
+    "constellation.headline.accent": "system",
+    "constellation.desc": "Not a long bio, not a hard CV. Just a quick map showing what's connected in the way I work.",
+
+    "orbit.headline": "Public builds and private systems,",
+    "orbit.headline.sub": "displayed in one",
+    "orbit.headline.accent": "orbit",
+    "orbit.desc": "One orbit for public work, one orbit for private work. Same structure, different access.",
+    "orbit.open.subcopy": "My public builds, experiments, and reusable work I've opened up for viewing.",
+    "orbit.closed.subcopy": "Client work, internal systems, and private builds that stay under mission control.",
+
+    "modal.strategy.headline": "Approach, stack, and outcome",
+    "modal.stack.note": "Stack chosen to support workflow, performance, and ease of project maintenance."
 }

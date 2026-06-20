@@ -1,9 +1,11 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { BrandIcon } from '../shared';
+import { useTranslation } from '../../hooks/useLocale';
 
 export default function ProjectModal({ project, tone, onClose }) {
     const isDark = tone === 'dark';
+    const { t } = useTranslation();
     const [shareStatus, setShareStatus] = useState('idle');
 
     const shareUrl = useMemo(() => {
@@ -369,7 +371,7 @@ export default function ProjectModal({ project, tone, onClose }) {
                                 <div className={`flex flex-wrap items-center justify-between gap-3 border-b p-3.5 ${isDark ? 'border-white/12' : 'border-line'}`}>
                                     <div>
                                         <p className={`font-mono text-[10px] uppercase tracking-[0.28em] ${isDark ? 'text-zinc-500' : 'text-ink-mute'}`}>TECHNICAL STRATEGY</p>
-                                        <h4 className="mt-2 text-lg font-semibold tracking-[-0.035em]">Pendekatan, stack, dan hasil</h4>
+                                        <h4 className="mt-2 text-lg font-semibold tracking-[-0.035em]">{t('modal.strategy.headline')}</h4>
                                     </div>
                                     <span className={`border px-3 py-1 text-xs font-medium ${isDark ? 'border-white/12 bg-white/[0.04] text-zinc-200' : 'border-line bg-surface-2 text-ink-soft'}`}>
                                         {project.stack.length} stack
@@ -410,7 +412,7 @@ export default function ProjectModal({ project, tone, onClose }) {
                                             ))}
                                         </div>
                                         <p className={`mt-3 text-sm leading-7 ${isDark ? 'text-zinc-400' : 'text-ink-mute'}`}>
-                                            Stack dipilih untuk mendukung alur kerja, performa, dan kemudahan maintenance proyek.
+                                            {t('modal.stack.note')}
                                         </p>
                                     </div>
                                 </div>

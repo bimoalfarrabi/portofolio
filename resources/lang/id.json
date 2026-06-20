@@ -71,5 +71,20 @@
     "lang.switch": "EN",
     "lang.current": "ID",
 
-    "footer.rights": "Hak cipta dilindungi."
+    "footer.rights": "Hak cipta dilindungi.",
+
+    "constellation.headline": "Skill, project, dan tools",
+    "constellation.headline.sub": "terhubung dalam satu",
+    "constellation.headline.accent": "sistem",
+    "constellation.desc": "Bukan bio panjang, bukan CV keras. Cuma peta singkat yang nunjukin apa yang saling terhubung di cara kerja saya.",
+
+    "orbit.headline": "Build publik dan sistem privat,",
+    "orbit.headline.sub": "ditampilkan dalam satu",
+    "orbit.headline.accent": "orbit",
+    "orbit.desc": "Satu orbit untuk kerja publik, satu orbit untuk kerja privat. Strukturnya sama, aksesnya berbeda.",
+    "orbit.open.subcopy": "Pilihan build publik, eksperimen, dan kerja reusable yang saya buka untuk dilihat.",
+    "orbit.closed.subcopy": "Kerja klien, sistem internal, dan build privat yang tetap berada di bawah kontrol misi.",
+
+    "modal.strategy.headline": "Pendekatan, stack, dan hasil",
+    "modal.stack.note": "Stack dipilih untuk mendukung alur kerja, performa, dan kemudahan maintenance proyek."
 }

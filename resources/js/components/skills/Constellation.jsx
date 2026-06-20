@@ -1,7 +1,9 @@
 import { motion } from 'motion/react';
 import { ConstellationOrbit } from './';
+import { useTranslation } from '../../hooks/useLocale';
 
 export default function Constellation({ skills }) {
+    const { t } = useTranslation();
     const activeSkills = (skills ?? []).map((skill, index) => ({
         label: skill.name,
         icon: skill.icon ?? null,
@@ -20,11 +22,11 @@ export default function Constellation({ skills }) {
                 >
                     <p className="eng-label mb-3">SYS_NODES · 05</p>
                     <h2 className="max-w-xl text-[clamp(2.4rem,6vw,4.4rem)] font-semibold leading-[0.98] tracking-[-0.05em] text-ink">
-                        Skill, project, dan tools
-                        <span className="block text-ink-faint">terhubung dalam satu <span className="text-accent">sistem</span>.</span>
+                        {t('constellation.headline')}
+                        <span className="block text-ink-faint">{t('constellation.headline.sub')} <span className="text-accent">{t('constellation.headline.accent')}</span>.</span>
                     </h2>
                     <p className="mt-6 max-w-lg text-base leading-8 text-ink-mute">
-                        Bukan bio panjang, bukan CV keras. Cuma peta singkat yang nunjukin apa yang saling terhubung di cara kerja saya.
+                        {t('constellation.desc')}
                     </p>
                 </motion.div>
 

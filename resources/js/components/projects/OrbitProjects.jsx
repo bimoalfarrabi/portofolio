@@ -4,12 +4,13 @@ import {
     ProjectModal,
     ProjectOrbit,
 } from './';
+import { useTranslation } from '../../hooks/useLocale';
 
-function normalizeProjects(seedProjects, mode) {
+function normalizeProjects(seedProjects, mode, t) {
     const grouped = seedProjects
         .map((project, index) => ({
             id: project.id ?? null,
-            name: project.title,
+            name: project.name ?? project.title,
             type: project.type,
             category: project.category,
             year: project.year,
@@ -41,18 +42,19 @@ function normalizeProjects(seedProjects, mode) {
             tone: 'light',
             activeLabel: 'Public Orbit',
             headline: 'OPEN SOURCE',
-            subcopy: 'Pilihan build publik, eksperimen, dan kerja reusable yang saya buka untuk dilihat.',
+            subcopy: t('orbit.open.subcopy'),
         }
         : {
             projects: closed,
             tone: 'dark',
             activeLabel: 'Classified Orbit',
             headline: 'CLOSED SOURCE',
-            subcopy: 'Kerja klien, sistem internal, dan build privat yang tetap berada di bawah kontrol misi.',
+            subcopy: t('orbit.closed.subcopy'),
         };
 }
 
 export default function OrbitProjects({ projects: seedProjects = [], focusProjectId = null }) {
+    const { t } = useTranslation();
     const initialMode = useMemo(() => {
         if (!focusProjectId) return 'open';
         const target = seedProjects.find((p) => Number(p.id) === Number(focusProjectId));
@@ -61,7 +63,7 @@ export default function OrbitProjects({ projects: seedProjects = [], focusProjec
 
     const [mode, setMode] = useState(initialMode);
     const [selectedProject, setSelectedProject] = useState(null);
-    const data = useMemo(() => normalizeProjects(seedProjects, mode), [mode, seedProjects]);
+    const data = useMemo(() => normalizeProjects(seedProjects, mode, t), [mode, seedProjects, t]);
 
     const autoOpenedRef = useRef(false);
     useEffect(() => {
@@ -105,11 +107,11 @@ export default function OrbitProjects({ projects: seedProjects = [], focusProjec
                 >
                     <p className="eng-label mb-3">SYS_ORBIT · 06</p>
                     <h2 className="text-[clamp(2.4rem,6vw,4.4rem)] font-semibold leading-[0.98] tracking-[-0.05em] text-ink">
-                        Build publik dan sistem privat,
-                        <span className="block text-ink-faint">ditampilkan dalam satu <span className="text-accent">orbit</span>.</span>
+                        {t('orbit.headline')}
+                        <span className="block text-ink-faint">{t('orbit.headline.sub')} <span className="text-accent">{t('orbit.headline.accent')}</span>.</span>
                     </h2>
                     <p className="mt-6 max-w-lg text-base leading-8 text-ink-mute">
-                        Satu orbit untuk kerja publik, satu orbit untuk kerja privat. Strukturnya sama, aksesnya berbeda.
+                        {t('orbit.desc')}
                     </p>
 
                     <div className="relative mt-8 grid w-[20rem] grid-cols-2 border border-line bg-surface-1 p-1">
