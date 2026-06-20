@@ -25,7 +25,14 @@ $publicRoutes = function () {
         return view('welcome', [
             'locale' => app()->getLocale(),
             'portfolioData' => [
-                'projects' => PortfolioProject::query()->where('is_published', true)->orderBy('sort_order')->get(),
+                'projects' => PortfolioProject::query()->where('is_published', true)->orderBy('sort_order')->get()->map(function ($p) {
+                        return array_merge($p->toArray(), [
+                            'name'        => $p->trans('title'),
+                            'description' => $p->trans('description'),
+                            'approach'    => $p->trans('approach'),
+                            'outcome'     => $p->trans('outcome'),
+                        ]);
+                    }),
                 'skills' => PortfolioSkill::query()->where('is_active', true)->orderBy('sort_order')->get(),
                 'logs' => PortfolioLog::query()->where('is_published', true)->orderBy('sort_order')->get(),
                 'stats' => PortfolioStat::query()->where('is_active', true)->orderBy('sort_order')->get(),

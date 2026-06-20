@@ -24,16 +24,23 @@ class ShareProjectController extends Controller
     {
         abort_unless($project->is_published, 404);
 
-        $description = Str::of((string) ($project->description ?: 'Lihat detail project ini di orbit viasco prjkt.'))
+        $description = Str::of((string) ($project->trans('description') ?: 'Lihat detail project ini di orbit viasco prjkt.'))
             ->squish()
             ->limit(180)
             ->value();
 
-        $title = trim($project->title.' — '.config('app.name', 'viasco prjkt.'));
+        $title = trim($project->trans('title').' — '.config('app.name', 'viasco prjkt.'));
 
         return view('welcome', [
             'portfolioData' => [
-                'projects' => PortfolioProject::query()->where('is_published', true)->orderBy('sort_order')->get(),
+                'projects' => PortfolioProject::query()->where('is_published', true)->orderBy('sort_order')->get()->map(function ($p) {
+                    return array_merge($p->toArray(), [
+                        'name'        => $p->trans('title'),
+                        'description' => $p->trans('description'),
+                        'approach'    => $p->trans('approach'),
+                        'outcome'     => $p->trans('outcome'),
+                    ]);
+                }),
                 'skills' => PortfolioSkill::query()->where('is_active', true)->orderBy('sort_order')->get(),
                 'logs' => PortfolioLog::query()->where('is_published', true)->orderBy('sort_order')->get(),
                 'stats' => PortfolioStat::query()->where('is_active', true)->orderBy('sort_order')->get(),
