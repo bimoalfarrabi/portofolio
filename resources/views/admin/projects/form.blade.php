@@ -15,7 +15,9 @@
             @method('PUT')
         @endif
 
-        @php($stackValue = is_array($project->stack) ? implode(', ', $project->stack) : '')
+         @php
+             $stackValue = is_array($project->stack) ? implode(', ', $project->stack) : '';
+         @endphp
 
         {{-- Basic info --}}
         <x-admin.panel label="Informasi Dasar">
@@ -38,7 +40,7 @@
                     <div id="repo-urls-container" class="space-y-2">
                         @php
                             $repoUrls = old('repo_urls', $project->repo_urls ?? []);
-                            if (empty($repoUrls)) $repoUrls = [['label' => '', 'url' => '']];
+                            $repoUrls = empty($repoUrls) ? [['label' => '', 'url' => '']] : $repoUrls;
                         @endphp
                         @foreach ($repoUrls as $i => $repo)
                             <div class="repo-url-row flex gap-2 items-start">
@@ -51,7 +53,9 @@
                     <button type="button" onclick="addRepoUrl()" class="inline-flex items-center gap-1 text-xs text-ink-mute hover:text-ink transition-colors mt-1">
                         <span class="text-base leading-none">+</span> Tambah repository
                     </button>
-                    <x-admin.field-error name="repo_urls" />
+                    @error('repo_urls')
+                        <span class="text-xs text-warn">{{ $message }}</span>
+                    @enderror
                     <span class="text-xs text-ink-mute">Link repository publik. Ditampilkan sebagai tombol di halaman publik.</span>
                 </div>
                 <label class="grid gap-2 sm:col-span-2">
