@@ -24,7 +24,7 @@ function normalizeProjects(seedProjects, mode, t) {
             stack: project.stack ?? [],
             outcome: project.outcome,
             isFeatured: project.is_featured ?? false,
-            repo_url: project.repo_url ?? null,
+            repo_urls: project.repo_urls ?? [],
             web_url: project.web_url ?? null,
         }))
         .sort((left, right) => {
