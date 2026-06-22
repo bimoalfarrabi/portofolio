@@ -44,6 +44,7 @@ import {
     siLinux,
     siJetpackcompose,
     siArchlinux,
+    siSvelte,
 } from 'simple-icons';
 
 // ── Brand marks (official paths) ───────────────────────────────────────
@@ -80,6 +81,7 @@ const BRAND_PATHS = {
     linux: siLinux.path,
     jetpackcompose: siJetpackcompose.path,
     archlinux: siArchlinux.path,
+    svelte: siSvelte.path,
 };
 
 // ── Concept icons (hand-drawn; no brand exists) ────────────────────────
@@ -250,6 +252,8 @@ const ALIASES = {
     'jetpack compose': 'jetpackcompose',
     arch: 'archlinux',
     'arch linux': 'archlinux',
+    sveltekit: 'svelte',
+    'svelte.js': 'svelte',
     cachy: 'cachyos',
     'cachy os': 'cachyos',
 };
