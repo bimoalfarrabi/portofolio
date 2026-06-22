@@ -25,8 +25,15 @@ class StoreProjectRequest extends FormRequest
             $removeGallery = [];
         }
 
+        // Filter empty repo_urls entries
+        $repoUrls = collect($this->input('repo_urls', []))
+            ->filter(fn ($item) => ! empty($item['url']))
+            ->values()
+            ->all();
+
         $this->merge([
             'stack' => $stack,
+            'repo_urls' => $repoUrls ?: null,
             'is_published' => $this->boolean('is_published'),
             'is_featured' => $this->boolean('is_featured'),
             'remove_image' => $this->boolean('remove_image'),
@@ -42,7 +49,9 @@ class StoreProjectRequest extends FormRequest
         return [
             'title' => ['required', 'string', 'max:255'],
             'type' => ['required', Rule::in(['open', 'closed'])],
-            'repo_url' => ['nullable', 'url', 'max:2048'],
+            'repo_urls' => ['nullable', 'array'],
+            'repo_urls.*.label' => ['required_with:repo_urls.*', 'string', 'max:50'],
+            'repo_urls.*.url' => ['required_with:repo_urls.*', 'url', 'max:2048'],
             'web_url' => ['nullable', 'url', 'max:2048'],
             'category' => ['nullable', 'string', 'max:255'],
             'year' => ['nullable', 'string', 'max:20'],

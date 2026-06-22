@@ -34,10 +34,25 @@
                     <x-admin.field-error name="type" />
                 </label>
                 <div id="repo-url-field" class="grid gap-2 sm:col-span-2 {{ old('type', $project->type ?: 'open') === 'closed' ? 'hidden' : '' }}">
-                    <span class="text-sm font-medium text-ink-soft">Repository URL</span>
-                    <input name="repo_url" value="{{ old('repo_url', $project->repo_url) }}" class="@error('repo_url') border-warn @enderror border border-line bg-surface-1 px-4 py-3 text-sm outline-none transition-colors focus:border-ink-soft focus:ring-0" placeholder="https://github.com/username/repo">
-                    <x-admin.field-error name="repo_url" />
-                    <span class="text-xs text-ink-mute">Link repository publik. Ditampilkan di halaman publik sebagai tombol.</span>
+                    <span class="text-sm font-medium text-ink-soft">Repository URLs</span>
+                    <div id="repo-urls-container" class="space-y-2">
+                        @php
+                            $repoUrls = old('repo_urls', $project->repo_urls ?? []);
+                            if (empty($repoUrls)) $repoUrls = [['label' => '', 'url' => '']];
+                        @endphp
+                        @foreach ($repoUrls as $i => $repo)
+                            <div class="repo-url-row flex gap-2 items-start">
+                                <input name="repo_urls[{{ $i }}][label]" value="{{ $repo['label'] ?? '' }}" class="border border-line bg-surface-1 px-3 py-2.5 text-sm outline-none transition-colors focus:border-ink-soft focus:ring-0 w-32" placeholder="Label (e.g. Web)">
+                                <input name="repo_urls[{{ $i }}][url]" value="{{ $repo['url'] ?? '' }}" class="border border-line bg-surface-1 px-3 py-2.5 text-sm outline-none transition-colors focus:border-ink-soft focus:ring-0 flex-1" placeholder="https://github.com/username/repo">
+                                <button type="button" onclick="this.closest('.repo-url-row').remove()" class="border border-line px-2.5 py-2.5 text-sm text-ink-mute hover:text-warn hover:border-warn transition-colors">&times;</button>
+                            </div>
+                        @endforeach
+                    </div>
+                    <button type="button" onclick="addRepoUrl()" class="inline-flex items-center gap-1 text-xs text-ink-mute hover:text-ink transition-colors mt-1">
+                        <span class="text-base leading-none">+</span> Tambah repository
+                    </button>
+                    <x-admin.field-error name="repo_urls" />
+                    <span class="text-xs text-ink-mute">Link repository publik. Ditampilkan sebagai tombol di halaman publik.</span>
                 </div>
                 <label class="grid gap-2 sm:col-span-2">
                     <span class="text-sm font-medium text-ink-soft">Website URL</span>
@@ -294,5 +309,18 @@
                 }
             });
         })();
+
+        function addRepoUrl() {
+            const container = document.getElementById('repo-urls-container');
+            const index = container.querySelectorAll('.repo-url-row').length;
+            const row = document.createElement('div');
+            row.className = 'repo-url-row flex gap-2 items-start';
+            row.innerHTML = `
+                <input name="repo_urls[${index}][label]" value="" class="border border-line bg-surface-1 px-3 py-2.5 text-sm outline-none transition-colors focus:border-ink-soft focus:ring-0 w-32" placeholder="Label (e.g. Web)">
+                <input name="repo_urls[${index}][url]" value="" class="border border-line bg-surface-1 px-3 py-2.5 text-sm outline-none transition-colors focus:border-ink-soft focus:ring-0 flex-1" placeholder="https://github.com/username/repo">
+                <button type="button" onclick="this.closest('.repo-url-row').remove()" class="border border-line px-2.5 py-2.5 text-sm text-ink-mute hover:text-warn hover:border-warn transition-colors">&times;</button>
+            `;
+            container.appendChild(row);
+        }
     </script>
 @endpush

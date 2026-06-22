@@ -17,7 +17,7 @@ class PortfolioProject extends Model
         'title',
         'title_en',
         'type',
-        'repo_url',
+        'repo_urls',
         'web_url',
         'category',
         'year',
@@ -47,6 +47,7 @@ class PortfolioProject extends Model
         return [
             'stack' => 'array',
             'gallery' => 'array',
+            'repo_urls' => 'array',
             'is_published' => 'boolean',
             'is_featured' => 'boolean',
         ];
