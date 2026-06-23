@@ -10,6 +10,7 @@ import {
     Transmission,
     YearProgress,
 } from './';
+import NasaCursor from './shared/NasaCursor';
 
 export default function App() {
     const portfolioData = window.__PORTFOLIO_DATA__ ?? {};
@@ -17,6 +18,7 @@ export default function App() {
 
     return (
         <main>
+            <NasaCursor />
             <Navbar />
             <Hero />
             <YearProgress />
