@@ -167,16 +167,17 @@
     @include('admin._partials.confirm-dialog')
     @stack('scripts')
     {{-- NASA cursor (vanilla JS — React not mounted in admin) --}}
-    <div id="_nc-dot" aria-hidden="true" class="nasa-cursor-dot"></div>
-    <div id="_nc-ring" aria-hidden="true" class="nasa-cursor-ring"></div>
+    <div id="_nc-dot" aria-hidden="true" class="nasa-cursor-dot" style="opacity:0"></div>
+    <div id="_nc-ring" aria-hidden="true" class="nasa-cursor-ring" style="opacity:0"></div>
     <script>
         (function () {
             if (window.matchMedia('(pointer: coarse)').matches) return;
             var dot = document.getElementById('_nc-dot');
             var ring = document.getElementById('_nc-ring');
-            var mx = -100, my = -100, rx = -100, ry = -100;
+            var mx = -100, my = -100, rx = -100, ry = -100, ready = false;
             document.addEventListener('mousemove', function (e) {
                 mx = e.clientX; my = e.clientY;
+                if (!ready) { rx = mx; ry = my; dot.style.opacity = ''; ring.style.opacity = ''; ready = true; }
                 var el = e.target.closest('a, button, [role="button"], input, textarea, select, label, [data-cursor="pointer"]');
                 ring.dataset.active = el ? '1' : '0';
             });
