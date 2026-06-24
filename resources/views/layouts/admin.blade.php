@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600,700|jetbrains-mono:400,500,600" rel="stylesheet" />
     @vite(['resources/css/app.css', 'resources/js/app.jsx'])
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@hotwired/turbo@8/dist/turbo.es2017.esm.js"></script>
 </head>
 <body class="bg-surface-0 text-ink antialiased">
     <div class="flex min-h-screen">
@@ -189,6 +190,7 @@
         })();
     </script>
     <script>
+        document.addEventListener('turbo:load', function () {
         (function () {
             const badges = document.querySelectorAll('[data-unread-badge]');
             if (! badges.length) return;
@@ -227,6 +229,7 @@
                 }
             });
         })();
+        }); // turbo:load
     </script>
 </body>
 </html>
