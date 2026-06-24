@@ -165,6 +165,29 @@
     </div>
     @include('admin._partials.confirm-dialog')
     @stack('scripts')
+    {{-- NASA cursor (vanilla JS — React not mounted in admin) --}}
+    <div id="_nc-dot" aria-hidden="true" class="nasa-cursor-dot"></div>
+    <div id="_nc-ring" aria-hidden="true" class="nasa-cursor-ring"></div>
+    <script>
+        (function () {
+            if (window.matchMedia('(pointer: coarse)').matches) return;
+            var dot = document.getElementById('_nc-dot');
+            var ring = document.getElementById('_nc-ring');
+            var mx = -100, my = -100, rx = -100, ry = -100;
+            document.addEventListener('mousemove', function (e) {
+                mx = e.clientX; my = e.clientY;
+                var el = e.target.closest('a, button, [role="button"], input, textarea, select, label, [data-cursor="pointer"]');
+                ring.dataset.active = el ? '1' : '0';
+            });
+            (function loop() {
+                rx += (mx - rx) * 0.18;
+                ry += (my - ry) * 0.18;
+                dot.style.transform = 'translate(' + mx + 'px,' + my + 'px)';
+                ring.style.transform = 'translate(' + rx + 'px,' + ry + 'px)';
+                requestAnimationFrame(loop);
+            })();
+        })();
+    </script>
     <script>
         (function () {
             const badges = document.querySelectorAll('[data-unread-badge]');
