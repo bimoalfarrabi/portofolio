@@ -158,7 +158,8 @@ export default function Navbar() {
                         animate={{ height: 'auto', opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                        className="overflow-hidden border-t border-line bg-surface-0 md:hidden"
+                        className="border-t border-line bg-surface-0 md:hidden"
+                        style={{ overflow: 'hidden' }}
                     >
                         <div className="flex flex-col gap-1 px-5 py-5">
                             <LanguageSwitch className="px-4 py-2" />
@@ -168,7 +169,12 @@ export default function Navbar() {
                                     <a
                                         key={link.label}
                                         href={link.href}
-                                        onClick={() => setMenuOpen(false)}
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            setMenuOpen(false);
+                                            const id = link.href.slice(1);
+                                            document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                        }}
                                         className={`relative px-4 py-2 font-mono text-xs uppercase tracking-[0.14em] transition-colors ${
                                             isActive
                                                 ? 'text-ink'
