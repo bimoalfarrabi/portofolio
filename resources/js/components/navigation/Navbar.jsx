@@ -171,9 +171,11 @@ export default function Navbar() {
                                         href={link.href}
                                         onClick={(e) => {
                                             e.preventDefault();
-                                            setMenuOpen(false);
                                             const id = link.href.slice(1);
-                                            document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                            setMenuOpen(false);
+                                            setTimeout(() => {
+                                                document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                            }, 50);
                                         }}
                                         className={`relative px-4 py-2 font-mono text-xs uppercase tracking-[0.14em] transition-colors ${
                                             isActive
