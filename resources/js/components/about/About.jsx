@@ -12,26 +12,7 @@ export default function About() {
     useEffect(() => {
         const noHover = !(window.matchMedia?.('(hover: hover)').matches ?? true);
         setIsTouchDevice(noHover);
-
-        if (!noHover) return undefined;
-
-        // Touch device: auto-activate when section is sufficiently visible,
-        // deactivate when scrolled away.
-        const node = sectionRef.current;
-        if (!node) return undefined;
-
-        const observer = new IntersectionObserver(
-            ([entry]) => setProfileActive(entry.intersectionRatio > 0.25),
-            { threshold: [0, 0.1, 0.25, 0.5, 0.75] },
-        );
-        observer.observe(node);
-        return () => observer.disconnect();
     }, []);
-
-    const handleTap = () => {
-        if (!isTouchDevice) return;
-        setProfileActive((prev) => !prev);
-    };
 
     return (
         <section
@@ -45,12 +26,13 @@ export default function About() {
                     setProfileActive(false);
                 }
             }}
-            onClick={handleTap}
             className="relative overflow-hidden bg-surface-0 px-5 py-24 text-ink"
         >
-            <div className="pointer-events-none absolute inset-0 z-[1] opacity-35">
-                <AstronautDots active={profileActive} />
-            </div>
+            {!isTouchDevice && (
+                <div className="pointer-events-none absolute inset-0 z-[1] opacity-35">
+                    <AstronautDots active={profileActive} />
+                </div>
+            )}
 
             <div className="relative z-10 mx-auto max-w-6xl">
                 <motion.div
