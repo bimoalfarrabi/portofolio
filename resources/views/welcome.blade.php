@@ -41,8 +41,9 @@
         <meta name="twitter:description" content="{{ $metaDescription }}">
         <meta name="twitter:image" content="{{ $metaImage }}">
 
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600,700|jetbrains-mono:400,500,600" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
+        <link rel="preload" as="style" href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600,700|jetbrains-mono:400,500,600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600,700|jetbrains-mono:400,500,600&display=swap"></noscript>
         @viteReactRefresh
         @vite(['resources/css/app.css', 'resources/js/app.jsx'])
     </head>
