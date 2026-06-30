@@ -59,13 +59,8 @@ export default function ProjectModal({ project, tone, onClose }) {
                 return;
             }
             if (!hasSlider) return;
-            if (event.key === 'ArrowRight') {
-                setDirection(1);
-                setSlide((prev) => (prev + 1) % images.length);
-            } else if (event.key === 'ArrowLeft') {
-                setDirection(-1);
-                setSlide((prev) => (prev - 1 + images.length) % images.length);
-            }
+            if (event.key === 'ArrowRight') paginate(1);
+            else if (event.key === 'ArrowLeft') paginate(-1);
         };
 
         window.addEventListener('keydown', handleKeyDown);

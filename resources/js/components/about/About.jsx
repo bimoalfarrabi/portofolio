@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import AstronautDots from './AstronautDots';
 import { useTranslation } from '../../hooks/useLocale';
@@ -7,7 +7,6 @@ export default function About() {
     const { t } = useTranslation();
     const [profileActive, setProfileActive] = useState(false);
     const [isTouchDevice, setIsTouchDevice] = useState(false);
-    const sectionRef = useRef(null);
 
     useEffect(() => {
         const noHover = !(window.matchMedia?.('(hover: hover)').matches ?? true);
@@ -16,7 +15,6 @@ export default function About() {
 
     return (
         <section
-            ref={sectionRef}
             id="about"
             onMouseEnter={() => !isTouchDevice && setProfileActive(true)}
             onMouseLeave={() => !isTouchDevice && setProfileActive(false)}

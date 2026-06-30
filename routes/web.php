@@ -11,44 +11,13 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\Collab\CollabController;
 use App\Http\Controllers\Collab\CollabMessageController;
 use App\Http\Controllers\Admin\Messages\MessageController;
-use App\Models\PortfolioCollab;
-use App\Models\PortfolioLog;
-use App\Models\PortfolioProject;
-use App\Models\PortfolioSkill;
-use App\Models\PortfolioStat;
+use App\Http\Controllers\PortfolioController;
 use Illuminate\Support\Facades\Route;
 
 // Public routes — available as both / (ID) and /en/ (EN)
 // The SetLocale middleware reads the first URL segment to set the locale.
 $publicRoutes = function () {
-    Route::get('/', function () {
-        return view('welcome', [
-            'locale' => app()->getLocale(),
-            'portfolioData' => [
-                'projects' => PortfolioProject::query()->where('is_published', true)->orderBy('sort_order')->get()->map(function ($p) {
-                        return array_merge($p->toArray(), [
-                            'name'        => $p->trans('title'),
-                            'description' => $p->trans('description'),
-                            'approach'    => $p->trans('approach'),
-                            'outcome'     => $p->trans('outcome'),
-                        ]);
-                    }),
-                'skills' => PortfolioSkill::query()->where('is_active', true)->orderBy('sort_order')->get(),
-                'logs' => PortfolioLog::query()->where('is_published', true)->orderBy('sort_order')->get(),
-                'stats' => PortfolioStat::query()->where('is_active', true)->orderBy('sort_order')->get(),
-                'collab' => (function () {
-                        $c = PortfolioCollab::current();
-                        return array_merge($c->toArray(), [
-                            'available_label'   => $c->trans('available_label'),
-                            'busy_label'        => $c->trans('busy_label'),
-                            'location'          => $c->trans('location'),
-                            'time_zone_label'   => $c->trans('time_zone_label'),
-                            'response_time'     => $c->trans('response_time'),
-                        ]);
-                    })(),
-            ],
-        ]);
-    })->name('home');
+    Route::get('/', PortfolioController::class)->name('home');
 
     Route::get('/p/{project}', [ShareProjectController::class, 'show'])
         ->name('share.project');

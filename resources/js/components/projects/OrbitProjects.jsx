@@ -6,7 +6,13 @@ import {
 } from './';
 import { useTranslation } from '../../hooks/useLocale';
 
-function normalizeProjects(seedProjects, mode, t) {
+// Presentation config per mode — tone/label/headline live here, not in the mapper.
+const ORBIT_CONFIG = {
+    open:   { tone: 'light', activeLabel: 'Public Orbit',    headline: 'OPEN SOURCE'   },
+    closed: { tone: 'dark',  activeLabel: 'Classified Orbit', headline: 'CLOSED SOURCE' },
+};
+
+function normalizeProjects(seedProjects) {
     const grouped = seedProjects
         .map((project, index) => ({
             id: project.id ?? null,
@@ -33,24 +39,10 @@ function normalizeProjects(seedProjects, mode, t) {
             return left.year - right.year;
         });
 
-    const open = grouped.filter((project) => project.type !== 'closed');
-    const closed = grouped.filter((project) => project.type === 'closed');
-
-    return mode === 'open'
-        ? {
-            projects: open,
-            tone: 'light',
-            activeLabel: 'Public Orbit',
-            headline: 'OPEN SOURCE',
-            subcopy: t('orbit.open.subcopy'),
-        }
-        : {
-            projects: closed,
-            tone: 'dark',
-            activeLabel: 'Classified Orbit',
-            headline: 'CLOSED SOURCE',
-            subcopy: t('orbit.closed.subcopy'),
-        };
+    return {
+        open:   grouped.filter((p) => p.type !== 'closed'),
+        closed: grouped.filter((p) => p.type === 'closed'),
+    };
 }
 
 export default function OrbitProjects({ projects: seedProjects = [], focusProjectId = null }) {
@@ -63,13 +55,16 @@ export default function OrbitProjects({ projects: seedProjects = [], focusProjec
 
     const [mode, setMode] = useState(initialMode);
     const [selectedProject, setSelectedProject] = useState(null);
-    const data = useMemo(() => normalizeProjects(seedProjects, mode, t), [mode, seedProjects, t]);
+    const normalized = useMemo(() => normalizeProjects(seedProjects), [seedProjects]);
+    const config = ORBIT_CONFIG[mode];
+    const projects = normalized[mode];
 
     const autoOpenedRef = useRef(false);
     useEffect(() => {
         if (!focusProjectId || autoOpenedRef.current) return undefined;
-        const target = data.projects.find((p) => Number(p.id) === Number(focusProjectId));
+        const target = projects.find((p) => Number(p.id) === Number(focusProjectId));
         if (!target) return undefined;
+
         autoOpenedRef.current = true;
         const handle = window.setTimeout(() => {
             const section = document.getElementById('projects');
@@ -77,7 +72,7 @@ export default function OrbitProjects({ projects: seedProjects = [], focusProjec
             setSelectedProject(target);
         }, 450);
         return () => window.clearTimeout(handle);
-    }, [data.projects, focusProjectId]);
+    }, [projects, focusProjectId]);
 
     useEffect(() => {
         if (!selectedProject) return undefined;
@@ -154,17 +149,17 @@ export default function OrbitProjects({ projects: seedProjects = [], focusProjec
 
                 <div>
                     <div className="mb-4 max-w-[18rem] text-ink-mute">
-                        <p className="eng-label">{data.headline}</p>
-                        <p className="mt-2 text-sm leading-6">{data.subcopy}</p>
+                        <p className="eng-label">{config.headline}</p>
+                        <p className="mt-2 text-sm leading-6">{t(`orbit.${mode}.subcopy`)}</p>
                     </div>
                     <AnimatePresence mode="wait">
                         <ProjectOrbit
                             key={mode}
-                            projects={data.projects}
-                            tone={data.tone}
-                            headline={data.headline}
-                            subcopy={data.subcopy}
-                            activeLabel={data.activeLabel}
+                            projects={projects}
+                            tone={config.tone}
+                            headline={config.headline}
+                            subcopy={t(`orbit.${mode}.subcopy`)}
+                            activeLabel={config.activeLabel}
                             direction={mode}
                             onSelectProject={setSelectedProject}
                         />
