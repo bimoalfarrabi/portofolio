@@ -39,7 +39,10 @@ class UserController extends Controller
 
     public function store(StoreUserRequest $request): RedirectResponse
     {
-        User::create($request->validated());
+        $data = $request->validated();
+        $user = User::create($data);
+        $user->is_admin = (bool) ($data['is_admin'] ?? false);
+        $user->save();
 
         return redirect()->route('admin.users.index')->with('status', 'User tersimpan.');
     }
@@ -60,7 +63,9 @@ class UserController extends Controller
             unset($data['password']);
         }
 
-        $user->update($data);
+        $user->fill($data);
+        $user->is_admin = (bool) ($data['is_admin'] ?? false);
+        $user->save();
 
         return redirect()->route('admin.users.index')->with('status', 'User diperbarui.');
     }
@@ -82,9 +87,8 @@ class UserController extends Controller
             return redirect()->route('admin.users.index')->with('status', 'User yang sedang login tidak dapat mengubah role dirinya sendiri.');
         }
 
-        $user->update([
-            'is_admin' => ! $user->is_admin,
-        ]);
+        $user->is_admin = ! $user->is_admin;
+        $user->save();
 
         return redirect()->route('admin.users.index')->with('status', $user->is_admin ? 'User dijadikan admin.' : 'Role admin dicabut.');
     }
