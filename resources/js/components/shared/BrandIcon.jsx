@@ -45,6 +45,7 @@ import {
     siJetpackcompose,
     siArchlinux,
     siSvelte,
+    siAstro,
 } from 'simple-icons';
 
 // ── Brand marks (official paths) ───────────────────────────────────────
@@ -82,6 +83,7 @@ const BRAND_PATHS = {
     jetpackcompose: siJetpackcompose.path,
     archlinux: siArchlinux.path,
     svelte: siSvelte.path,
+    astro: siAstro.path,
 };
 
 // ── Concept icons (hand-drawn; no brand exists) ────────────────────────
