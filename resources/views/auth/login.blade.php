@@ -7,6 +7,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.jsx'])
 </head>
 <body class="bg-surface-0 text-ink antialiased">
+    <div id="nasa-cursor-root"></div>
     <main class="flex min-h-screen items-center justify-center px-5 py-12">
         {{-- Ambient glow --}}
         <div class="pointer-events-none fixed inset-0 overflow-hidden">

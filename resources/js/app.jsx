@@ -1,6 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './components/App';
+import NasaCursor from './components/shared/NasaCursor';
 import BrandIcon from './components/shared/BrandIcon';
 import './bootstrap';
 
@@ -8,6 +9,12 @@ import './bootstrap';
 const appRoot = document.getElementById('app');
 if (appRoot) {
     createRoot(appRoot).render(<App />);
+}
+
+// Standalone cursor for non-SPA pages (e.g. login)
+const cursorRoot = document.getElementById('nasa-cursor-root');
+if (cursorRoot) {
+    createRoot(cursorRoot).render(<NasaCursor />);
 }
 
 // Admin CMS: live brand-icon previews (Blade-driven via data attributes)
