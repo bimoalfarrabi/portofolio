@@ -52,12 +52,9 @@ export default function About() {
                     <p className="mt-4 text-base leading-8 text-ink-mute">
                         {t('about.bio.2')}
                     </p>
-                    <p className="mt-8 eng-label">
-                        {isTouchDevice
-                            ? (profileActive ? t('about.hover.touch.hide') : t('about.hover.touch.show'))
-                            : t('about.hover.desktop')
-                        }
-                    </p>
+                    {!isTouchDevice && (
+                        <p className="mt-8 eng-label">{t('about.hover.desktop')}</p>
+                    )}
                 </motion.div>
 
                 <motion.div

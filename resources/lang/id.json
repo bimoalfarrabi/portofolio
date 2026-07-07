@@ -23,8 +23,6 @@
     "about.bio.1": "Saya seorang pengembang — pakai Laravel di back-end, React/Vue/Blade di front-end, dan Kotlin untuk Android. Laravel jadi pilihan utama bukan karena ikut-ikutan, tapi karena sudah terbiasa dan terbukti produktif untuk kebanyakan project web. Suka bikin situs web yang enak dilihat, terasa bernapas, dan selesai tepat waktu.",
     "about.bio.2": "Yang saya cari bukan \"skill set paling lengkap\", tapi cara kerja yang masuk akal, desain yang tidak berisik, dan project yang benar-benar selesai.",
     "about.hover.desktop": "Arahkan kursor ke sini untuk menampilkan siluet profil",
-    "about.hover.touch.show": "Ketuk bagian ini untuk menampilkan siluet profil",
-    "about.hover.touch.hide": "Ketuk lagi untuk sembunyikan siluet",
     "about.available": "Tersedia",
 
     "transmission.label": "SYS_LOG · 04",

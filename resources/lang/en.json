@@ -23,8 +23,6 @@
     "about.bio.1": "I'm a developer — Laravel on the back-end, React/Vue/Blade on the front-end, and Kotlin for Android. Laravel is my go-to not because it's trendy, but because I know it well and it's proven productive for most web projects. I enjoy building websites that look good, feel alive, and ship on time.",
     "about.bio.2": "What I'm after isn't the most complete skill set, but a sensible workflow, clean design, and projects that actually get finished.",
     "about.hover.desktop": "Hover here to reveal the profile silhouette",
-    "about.hover.touch.show": "Tap here to reveal the profile silhouette",
-    "about.hover.touch.hide": "Tap again to hide the silhouette",
     "about.available": "Available",
 
     "transmission.label": "SYS_LOG · 04",
