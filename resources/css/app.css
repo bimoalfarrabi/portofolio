@@ -235,3 +235,12 @@ a, button, [role="button"], input, textarea, select, label, [data-cursor="pointe
     margin: -19px 0 0 -19px;
     opacity: 1;
 }
+
+/* Grab state — compressed crosshair, no circle */
+.nasa-cursor-ring[data-grab="1"] {
+    width: 16px; height: 16px;
+    margin: -8px 0 0 -8px;
+    border-color: transparent;
+    background-size: 1px 16px, 1px 16px, 16px 1px, 16px 1px;
+    opacity: 1;
+}

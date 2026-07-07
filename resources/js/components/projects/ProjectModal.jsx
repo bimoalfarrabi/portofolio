@@ -227,8 +227,9 @@ export default function ProjectModal({ project, tone, onClose }) {
                                                         paginate(-1);
                                                     }
                                                 }}
-                                                style={hasSlider ? { cursor: 'grab', touchAction: 'pan-y' } : undefined}
-                                                whileTap={hasSlider ? { cursor: 'grabbing' } : undefined}
+                                                style={hasSlider ? { cursor: 'none', touchAction: 'pan-y' } : undefined}
+                                                whileTap={hasSlider ? { cursor: 'none' } : undefined}
+                                                data-cursor={hasSlider ? 'grab' : undefined}
                                             />
                                         </AnimatePresence>
                                     </div>

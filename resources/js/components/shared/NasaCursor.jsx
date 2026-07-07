@@ -20,7 +20,9 @@ export default function NasaCursor() {
             my = e.clientY;
 
             const isInteractive = e.target.closest('a, button, [role="button"], input, textarea, select, label, [data-cursor="pointer"]');
+            const isGrab = e.target.closest('[data-cursor="grab"]');
             ring.dataset.active = isInteractive ? '1' : '0';
+            ring.dataset.grab = isGrab ? '1' : '0';
         };
 
         const loop = () => {
